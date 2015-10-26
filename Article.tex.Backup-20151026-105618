@@ -59,10 +59,7 @@
 
 
 \begin{abstract}
-The ability to control a given network by  dynamically injecting inputs offers ways to make sure that it stays in stable regions. In the case of smart grids, where end users exhibit complex behaviors and renewable production is quite unstable, control of the system  is paramount. In this paper, we study the case of a network composed of entities called prosumers. These agents have the ability to both consume and produce according to external conditions. We first model and simplify the underlying dynamic of such network using a second order coupled oscillators network model. Under some conditions, the system synchronize to a common frequency. However, in case of perturbations in the power distribution, the system might lose synchrony and require control to bring it back to stable state. In this situation, control can be seen as energy  absorbed or injected in the system at specific locations. Moreover, the power distribution of the prosumers is susceptible to change such that loads and generators are not fixed. In this context, it is important to select the right subset
-of nodes that yields, on average, the cheapest control in terms of energy. 
-
-
+Put the text of your abstract here.
 \end{abstract}
 
 
@@ -148,8 +145,7 @@ The equation can thus be simplified to :
  \ddot{ \theta_i } \sim \psi_i - \alpha \dot{ \theta_i } + \sum_{j\neq i} K_{ij} g_{ji} sin \left[ \theta_j - \theta_i \right] 
 \end{equation}
 
-Where $ \alpha = \dfrac{2 K_D}{I} $ is the dissipation term, $ K_{ij} = \frac{P_{ij}^{MAX}}{I \Omega} $ are the coupling strengths, $ \psi_i = \left[ \frac{P_{S,i}}{I \Omega} - \frac{K_D \Omega}{I} \right] $, and $ g_{ij} $ is the coefficient of the adjacency matrix G.
-By working in a rotating frame, we can simplify $ \psi_i=\frac{P_{S,i}}{I \Omega} $.
+Where $ \alpha = \dfrac{2 K_D}{I} $ is the dissipation term, $ K_{ij} = \frac{P_{ij}^{MAX}}{I \Omega} $ are the coupling strengths, $ \psi_i = \left[ \frac{P^i_{source}}{I \Omega} - \frac{K_D \Omega}{I} \right] $, and $ g_{ij} $ is the coefficient of the adjacency matrix G.
 
 The dynamic is still non linear because of the sine coupling. Therefore, we also assume that the phase angle differences are small such that $ sin \left[ \theta_j - \theta_i \right] \sim \theta_j - \theta_i $. By using vector notations, the dynamic can be written in the following form :
 
@@ -272,14 +268,14 @@ Therefore, we can write the following synchronization constraint :
 
 \begin{equation}
 \label{synchro_constraint}
-\Vert \left( L \circ P^{MAX} \right)^{\dagger} \Psi \Vert_{\infty} \leq sin(1)
+\Vert \left( L \circ P^{MAX} \right)^{\dagger} \Psi \Vert_{\infty} \leq 1
 \end{equation}
 
-Where $ A \circ B $ represents the Hadamard product between matrices A and B. If constraint \ref{synchro_constraint} is satisfied, the oscillators will synchronize to a common frequency $ \omega_{SYNC} = \frac{\sum_{k=1}^{N}\Psi_k}{\sum_{k=1}^{N}\alpha_k} = \frac{\sum_{k=1}^{N}P_{S,k}}{I\Omega N \alpha}$, and the flows at steady state will be feasible. Note that $\omega_{SYNC} $ should be zero in order to synchronize to the main frequency $\Omega$ (recall that the phase angles and frequencies represent deviations from $ \Omega$). This gives the following intuitive zero sum constraint :
+Where $ A \circ B $ represents the Hadamard product between matrices A and B. If constraint \ref{synchro_constraint} is satisfied, the oscillators will synchronize to a common frequency $ \omega_{SYNC} = \frac{\sum_{k=1}^{N}\Psi_k}{\sum_{k=1}^{N}\alpha_k} $, and the flows at steady state will be feasible. Note that $\omega_{SYNC} $ should be zero in order to synchronize to the main frequency $\Omega$ (recall that the phase angles and frequencies represent deviations from $ \Omega$). This gives the following intuitive zero sum constraint :
 
 \begin{equation}
 \label{zero_sum_constraint}
-\sum_{k=1}^{N} P_{S,k} = 0
+\sum_{k=1}^{N} \Psi_k = 0
 \end{equation}
 
 Constraint \ref{zero_sum_constraint} simply states that production should match demand in order for the system to remain stable.
@@ -306,16 +302,10 @@ Where $ \Lambda(0) $ is the vector of initial levels in the batteries.
 Obviously, the energy level in a battery is bounded. This leads to the following set of constraints : 
 
 \begin{equation}
- \forall t, \ \ 0 \leq \Lambda(t) \leq \Lambda_{MAX}
+\label{level_constraints}
+ \forall t, \ \ 0 \leq \Lambda(t) \leq \Lambda_{Max}
 \end{equation}
  
-Which can be written in terms of the control inputs :
-
-\begin{equation}
-\label{level_constraints}
-\forall t,-\frac{\Lambda(0)}{I \Omega} \leq -\sum_{k=0}^{t}u^{\star}(k) \leq \frac{ \Lambda_{MAX} - \Lambda(0)}{I \Omega}
-\end{equation}
-
 Finally, during each time slot, the battery cannot charge or discharge at a rate higher than $ r $ : 
 
 \begin{equation}
@@ -332,10 +322,11 @@ We propose the following greedy algorithm in order to find the smallest set of l
 \begin{algorithm}
 \label{algo_1}
         \begin{algorithmic}
-                \While {\small $ Not\ \left\{ \begin{array}{lll} rank \left[ W_{S_k}(T) \right] < 2N\ and \\ \forall t,\forall (i,j) \in V^2, g_{ij} \left| \theta_j(t) - \theta_i(t) \right| \leq 1\  and \\ \forall t,-\frac{\Lambda(0)}{I \Omega} \leq -\sum_{k=0}^{t}u^{\star}(k) \leq \frac{ \Lambda_{MAX} - \Lambda(0)}{I \Omega}and \\ \forall t,\ \left| u^{\star}(t) \right| \leq \frac{r}{I\Omega}\end{array} \right. $ }
+                \While {\small $ Not\ \left\{ \begin{array}{lll} rank \left[ W_{S_k}(T) \right] < 2N\ and \\ \forall t,\ \forall (i,j) \in V^2,\ g_{ij} \left|\theta_j(t)-\theta_i(t) \right| \leq 1\ and \\ \forall t,\ 0 \leq \Lambda(t) \leq \Lambda_{MAX}\ and \\ \forall t,\ u^{\star}(t)I\Omega \leq r\end{array} \right. $ }
     \State $k\ \ \ \ \ \ \ \ \ \ \ \gets k+1$
     \State $ S_k \ \ \ \ \ \ \ \ \ \gets Subopt(F, k)$
     \State $ u^{\star}(t)\ \ \ \ \ \ \gets OptControl(S_{k})$ 
+    \State $ Y(t), \Lambda(t) \gets Simulation(A,B,T,Y_0,Y_f,u^{\star}) $
 
         \end{algorithmic}
 \end{algorithm}
