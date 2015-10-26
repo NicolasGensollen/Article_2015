@@ -59,7 +59,7 @@
 
 
 \begin{abstract}
-The ability to control a given network by  dynamically injecting inputs offers ways to make sure that it stays in stable regions. In the case of smart grids, where end users exhibit complex behaviors and renewable production is quite unstable, control of the system  is paramount. In this paper, we study the case of a network composed of entities called prosumers. These agents have the ability to both consume and produce according to external conditions. We first model and simplify the underlying dynamic of such network using a second order coupled oscillators network model. Under some conditions, the system synchronize to a common frequency. However, in case of perturbations in the power distribution, the system might lose synchrony and require control to bring it back to stable state. In this situation, control can be seen as energy  absorbed or injected in the system at specific locations. Moreover, the power distribution of the prosumers is susceptible to change such that loads and generators are not fixed. In this context, it is important to select the right subset
+The ability to control a given network by  dynamically injecting inputs offers ways to make sure that it stays in stable regions. In the case of smart grids, where end users exhibit complex behaviors and renewable production is quite unstable, control of the system  is paramount. In this paper, we study the case of a network composed of entities called prosumers. These agents have the ability to both consume and produce according to external conditions. We first model and simplify the underlying dynamic of such network using a second order coupled oscillators network model. Under some conditions, the system synchronize to a common frequency. However, in case of perturbations in the power distribution, the system might lose synchrony and require control to bring it back to the stable state. In this situation, control can be seen as energy  absorbed or injected in the system at specific locations. Moreover, the power outputs of the prosumers are susceptible to change such that loads and generators are not fixed. In this context, it is important to select the right subset
 of nodes that yields, on average, the cheapest control in terms of energy. 
 
 
@@ -77,9 +77,9 @@ Furthermore, the emergence of renewable distributed energy
 will completely  
 modify the today end user agent model.
 
-These new agents that can both consume and produce are often called prosumers. This decentralized production is believed to lead to more resilient systems that today centralized power grid. Nonetheless, the difficulty of dealing with decentralized production is coupled with the high uncertainty of renewables. Ensure system stability in these conditions appears thus as a complex task. 
+These new agents that can both consume and produce are often called prosumers. This decentralized production is believed to lead to more resilient systems than today centralized power grid. Nonetheless, the difficulty of dealing with decentralized production is coupled with the high uncertainty of renewables. Ensure system stability in these conditions appears thus as a complex task. 
 
-Relying on the ability of the smart grid to obtain, communicate and analyse data, several solutions could  improve the stability of such complex systems. Among these solutions, demand side management and energy storage are two of the most popular ones. In this paper, we explore the use of storage in a network of prosumers whose power distribution is susceptible to change due to various external causes. More precisely, we are interested in the "best" locations for the storage equipments such that we are able to maintain stability when small perturbations occur. Since all nodes can switch from generator to load and vice versa, the optimal location is susceptible to change with the prosumers power distribution.
+Relying on the ability of the smart grid to obtain, communicate and analyse data, several solutions could  improve the stability of such complex systems. Among these solutions, demand side management and energy storage are two of the most popular ones. In this paper, we explore the use of storage in a network of prosumers whose power outputs are susceptible to change due to various external causes. More precisely, we are interested in the "best" locations for the storage equipments such that we are able to maintain stability when  perturbations occur. Since all nodes can switch from generator to load and vice versa, the optimal location is susceptible to change with the prosumers power output.
 Our goal is then to find the one that, on average, provide the best results.
 
 Since charging and discharging a battery is costly, we are particularly interested in the energy necessary to control the system when perturbations occur. The notion of performance of a given set of locations for using storage would then be inversely proportional to the energy used. One problem with this definition is that it depends explicitly on the state of the system and the prosumers power distribution. Besides, as the system size increases, the number of possible location sets increases exponentially. This forbid any algorithms using complete enumeration and evaluation of the sets.
@@ -327,7 +327,7 @@ If, for a given $ u^{\star} $, the constraints of eq. \ref{level_constraints} an
 
 \subsection{Algorithm}
 
-We propose the following greedy algorithm in order to find the smallest set of locations that minimizes the average control energy and satisfy the constraints. We assume here that the have a given initial state $ Y_0 $ and a desired final state $ Y_f$ that we want to reach in $ T $ time steps. The algorithm \ref{algo_1} starts with an empty set and, as long as that constraints are not satisfied, it increases the size of the set. For a given size k, the set $ S_k $ is found using lazy greedy submodular optimization of a Gramian-based set function F. In practice we use $ F(S) = -Tr \left[ W_S^{\dagger}(T) \right] $ which quantifies the average energy required to move the system around the controllable subspace. The algorithm \ref{algo_1} returns then the tuple $ (k,S_k,u^{\star}) $ such that $ S_k $ is the smallest set that minimizes the average control energy and, in this case, satisfies the constraints with control $u^{\star}$. 
+We propose the following greedy algorithm in order to find the smallest set of locations that minimizes the average control energy and satisfy the constraints. We assume here that the system is in a given initial state $ Y_0 $ and we want to reach a desired final state $ Y_f$  in $ T $ time steps. The algorithm \ref{algo_1} starts with an empty set and, as long as that constraints are not satisfied, it increases the size of the set. For a given size k, the set $ S_k $ is found using lazy greedy submodular optimization of a Gramian-based set function F. In practice we use $ F(S) = -Tr \left[ W_S^{\dagger}(T) \right] $ which quantifies the average energy required to move the system around the controllable subspace. The algorithm \ref{algo_1} returns then the tuple $ (k,S_k,u^{\star}) $ such that $ S_k $ is the smallest set that minimizes the average control energy and, in this case, satisfies the constraints with control $u^{\star}$. 
 
 \begin{algorithm}
 \label{algo_1}
@@ -340,11 +340,22 @@ We propose the following greedy algorithm in order to find the smallest set of l
         \end{algorithmic}
 \end{algorithm}
 \normalsize
-Since changing $ \Psi $, $Y_0$, or $Y_f$ does not change the Gramian, variations in the power distribution or initial and final states will not change the $S_k$ whatever k. However, they have an impact on the flows and battery levels since they appear explicitly in the control energy.
 
 
 
 \section{Results}
+In this section, we provide some results in order to illustrate the work described above. We use a small 10 prosumers example, connected with a random topology. The line maximum capacities are selected  according to a normal distribution $\mathcal{N}(\mu_l,\sigma_l)$.  The power distribution is chosen as a zero mean normal distribution $ \mathcal{N}(0,\sigma_p) $, and the samples should satisfy the constraints \ref{synchro_constraint} and \ref{zero_sum_constraint}. Obviously, $\mu_l$, $\sigma_l$, and $\sigma_p$ should be chosen such that, without any perturbation, the lines are not already overloaded.
+
+Once the synchronized state is reached, we apply a perturbation to the power distribution such that there is a mismatch between production and demand (constraint \ref{zero_sum_constraint} is not satisfied). We denote by $d$ the delay between the perturbation and the start of the control phase. $d$ depends on how fast the perturbation can be identified and located, the control inputs calculated and communicated without error through the communication network.
+
+
+ If the driver set is fixed, we expect that the higher $ d$, the higher the control energy required to drive the system back to the synchronized state. Eventually, if $d$ is too large, the minimum energy control inputs will result in some constraints being broken (battery levels, line flows, and so on...).
+
+Figure X illustrates the evolution of the state variables (phase angles and frequencies).
+As visible, when d increases, the system state deviates more from the equilibrium and results in more energy being used to steer it back to synchrony. Figure XX shows how the global control energy evolves with the delay $ d$. The red dot indicates the maximum delay tolerable by the system before a constraint is broken. Here, some batteries become empty as shown in figure XXX. 
+
+We next investigate how the driver node set selected with algorithm X performs against other driver sets of the same size. Since, the example is relatively small, we can enumerate all these sets, and filter out the ones that do not meet all the constraints. We then sample the power distribution of the prosumers and compare the resulting mean  control energies for all the sets.
+
 
 
 \bibliography{FilenameOfYourBibliography}
