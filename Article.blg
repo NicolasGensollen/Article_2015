@@ -1,22 +1,58 @@
-This is 8-bit Big BibTeX version 0.99c
-Implementation:  WIN32 Console, BaKoMa TNS bound.
-Release version: 3.71 (18 Aug 1996)
-
+This is BibTeX, Version 0.99d (TeX Live 2015/W32TeX)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Article.aux
-The style file: ieeepes.bst
-I couldn't open database file FilenameOfYourBibliography.bib
----line 15 of file Article.aux
- : \bibdata{FilenameOfYourBibliography
- :                                    }
-I'm skipping whatever remains of this command
-I found no \citation commands---while reading file Article.aux
-I found no database files---while reading file Article.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: Article.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in Liu2015
 
-Here's how much of BibTeX's memory you used:
- Cites:                 0 out of 7500
- Fields:           125000 out of 125000
- Hash table:        34877 out of 35000
- Strings:             458 out of 30000
- String pool:        3682 out of 750000
- Wizard functions:   1821 out of 10000
-(There were 3 error messages)
+Done.
+You've used 8 entries,
+            4087 wiz_defined-function locations,
+            887 strings with 8931 characters,
+and the built_in function-call counts, 6531 in all, are:
+= -- 562
+> -- 136
+< -- 58
++ -- 72
+- -- 22
+* -- 352
+:= -- 1061
+add.period$ -- 17
+call.type$ -- 8
+change.case$ -- 10
+chr.to.int$ -- 126
+cite$ -- 9
+duplicate$ -- 450
+empty$ -- 467
+format.name$ -- 29
+if$ -- 1477
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 72
+newline$ -- 57
+num.names$ -- 10
+pop$ -- 143
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 494
+stack$ -- 0
+substring$ -- 305
+swap$ -- 389
+text.length$ -- 16
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 8
+warning$ -- 1
+while$ -- 37
+width$ -- 9
+write$ -- 118
+(There was 1 warning)
