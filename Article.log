@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  28 OCT 2015 15:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  9 FEB 2016 15:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -805,7 +805,7 @@ Overfull \hbox (3.18854pt too wide) in paragraph at lines 339--347
 []\T1/ptm/b/n/10 while  $\OML/cmm/m/it/9 Not  []$
  []
 
-<frequencies.pdf, id=25, 722.7pt x 433.62pt>
+[4] <frequencies.pdf, id=36, 722.7pt x 433.62pt>
 File: frequencies.pdf Graphic file (type pdf)
  <use frequencies.pdf>
 Package pdftex.def Info: frequencies.pdf used on input line 364.
@@ -815,22 +815,93 @@ Overfull \hbox (22.62885pt too wide) in paragraph at lines 364--365
 [][] 
  []
 
+<rr.pdf, id=37, 867.24pt x 361.35pt>
+File: rr.pdf Graphic file (type pdf)
+ <use rr.pdf>
+Package pdftex.def Info: rr.pdf used on input line 372.
+(pdftex.def)             Requested size: 260.17401pt x 108.40584pt.
+
+Overfull \hbox (8.17401pt too wide) in paragraph at lines 372--373
+[][] 
+ []
+
+
+Underfull \vbox (badness 1803) has occurred while \output is active []
+
+
+<graphique_1.pdf, id=38, 1011.78pt x 433.62pt>
+File: graphique_1.pdf Graphic file (type pdf)
+ <use graphique_1.pdf>
+Package pdftex.def Info: graphique_1.pdf used on input line 385.
+(pdftex.def)             Requested size: 303.53633pt x 130.087pt.
+
+Overfull \hbox (51.53633pt too wide) in paragraph at lines 385--386
+[][] 
+ []
+
+[5 <./frequencies.pdf> <./rr.pdf
+
+pdfTeX warning: pdflatex.exe (file ./rr.pdf): PDF inclusion: multiple pdfs with
+ page group included in a single page
+> <./graphique_1.pdf
+
+pdfTeX warning: pdflatex.exe (file ./graphique_1.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+>] <block_model_3.pdf, id=159, 1084.05pt x 578.16pt>
+File: block_model_3.pdf Graphic file (type pdf)
+ <use block_model_3.pdf>
+Package pdftex.def Info: block_model_3.pdf used on input line 398.
+(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
+
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 398--399
+[][] 
+ []
+
+
+Underfull \vbox (badness 1062) has occurred while \output is active []
+
+
+<block_model_4.pdf, id=160, 1084.05pt x 578.16pt>
+File: block_model_4.pdf Graphic file (type pdf)
+ <use block_model_4.pdf>
+Package pdftex.def Info: block_model_4.pdf used on input line 407.
+(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
+
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 407--408
+[][] 
+ []
+
+<batteries_variance.pdf, id=161, 722.7pt x 433.62pt>
+File: batteries_variance.pdf Graphic file (type pdf)
+
+<use batteries_variance.pdf>
+Package pdftex.def Info: batteries_variance.pdf used on input line 416.
+(pdftex.def)             Requested size: 267.3948pt x 160.43689pt.
+
+Overfull \hbox (15.3948pt too wide) in paragraph at lines 416--417
+[][] 
+ []
+
 
 Package caption Warning: \label without proper \caption on input line 363.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:frequecies' on page 4 undefined on input line 368
+LaTeX Warning: Reference `fig:frequecies' on page 6 undefined on input line 426
 .
 
-[4] <energy_vs_delay2.pdf, id=37, 722.7pt x 361.35pt>
+[6 <./block_model_3.pdf> <./block_model_4.pdf
+
+pdfTeX warning: pdflatex.exe (file ./block_model_4.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+>] <energy_vs_delay2.pdf, id=253, 722.7pt x 361.35pt>
 File: energy_vs_delay2.pdf Graphic file (type pdf)
 
 <use energy_vs_delay2.pdf>
-Package pdftex.def Info: energy_vs_delay2.pdf used on input line 375.
+Package pdftex.def Info: energy_vs_delay2.pdf used on input line 433.
 (pdftex.def)             Requested size: 274.62885pt x 137.31442pt.
 
-Overfull \hbox (22.62885pt too wide) in paragraph at lines 375--376
+Overfull \hbox (22.62885pt too wide) in paragraph at lines 433--434
 [][] 
  []
 
@@ -839,37 +910,37 @@ Package caption Warning: \label without proper \caption on input line 336.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 5 undefined on input line 376.
+LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 434.
 
 
 Package caption Warning: \label without proper \caption on input line 336.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 5 undefined on input line 376.
+LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 434.
 
 
-Package caption Warning: \label without proper \caption on input line 374.
+Package caption Warning: \label without proper \caption on input line 432.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:energy_vs_delay' on page 5 undefined on input lin
-e 379.
+LaTeX Warning: Reference `fig:energy_vs_delay' on page 7 undefined on input lin
+e 437.
 
 
 Package caption Warning: \label without proper \caption on input line 336.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 5 undefined on input line 379.
+LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 437.
 
 
-Package caption Warning: \label without proper \caption on input line 374.
+Package caption Warning: \label without proper \caption on input line 432.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:energy_vs_delay' on page 5 undefined on input lin
-e 379.
+LaTeX Warning: Reference `fig:energy_vs_delay' on page 7 undefined on input lin
+e 437.
 
 (./Article.bbl
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
@@ -896,7 +967,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5 <./frequencies.pdf> <./energy_vs_delay2.pdf
+[7 <./batteries_variance.pdf> <./energy_vs_delay2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./energy_vs_delay2.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
@@ -906,13 +977,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6758 strings out of 493054
- 100135 string characters out of 6138326
- 183644 words of memory out of 5000000
- 10159 multiletter control sequences out of 15000+600000
+ 6788 strings out of 493054
+ 100709 string characters out of 6138326
+ 183878 words of memory out of 5000000
+ 10184 multiletter control sequences out of 15000+600000
  110783 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,38p,1177b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,10n,38p,2069b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2015/texmf-dist/fo
 nts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2015/texmf-dist/fonts/t
@@ -926,16 +997,17 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2015/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2015/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr9.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2015/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/ur
-w/times/utmbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pf
-b><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Article.pdf (5 pages, 288239 bytes).
+0.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2015/texmf-dist/fonts/
+type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
+mbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texl
+ive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Article.pdf (7 pages, 4724240 bytes).
 PDF statistics:
- 184 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 409 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

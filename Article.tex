@@ -357,13 +357,71 @@ We propose the following greedy algorithm in order to find the smallest set of l
 \section{Results}
 \label{sec:Results}
 
-In this section, we provide some results in order to illustrate the work described above. We use a small 10 prosumers example, connected with a random topology. The line maximum capacities are selected  according to a normal distribution $\mathcal{N}(\mu_l,\sigma_l)$.  The power distribution is chosen as a zero mean normal distribution $ \mathcal{N}(0,\sigma_p) $, and the samples should satisfy the constraints \ref{synchro_constraint} and \ref{zero_sum_constraint}. Obviously, $\mu_l$, $\sigma_l$, and $\sigma_p$ should be chosen such that, without any perturbation, the lines are not already overloaded.
+For a direct illustrative application, we chose a small system of 15 nodes connected with an erdos-renyi topology. The power distribution and the capacities of the lines are selected randomly such that the system is at equilibrium. Therefore, the production matches the consumption, no line is overloaded and all nodes are synchronized to the main frequency. We use the greedy algorithm (X) based on the trace of the inverse Gramian as to select the driver set $S$. At a given time $ t_k $, we introduce a small perturbation in the form of a mismatch between the production and consumption : $P_i(t_k) = P_i(t_{k-1}) + \delta P$ for some random node i. Consequently, the frequencies $ \dot{ \theta }_i \forall i $ of the oscillators start to deviate from the synchronized state. At time $ t_k + d $, we apply to the drivers the optimal control of equation (X) such that the system is brought to the synchronized state at time $ t_k + d + T $, where T is the control time. At this time, if the mismatch between production and consumption is still active, we maintain synchrony by using optimal control with $T=1$. Figure 1 shows the evolution of a subset (for clarity) of the nodes' frequencies during the control phase.
 
 \begin{figure}
 \label{fig:frequecies}
 \includegraphics[scale=.38]{frequencies}
 \caption{Time series of the N frequencies $\omega_i$ (phase angles are not shown for clarity). $d$ is the delay between the perturbation and the begining of the control phase that bring the system bak in the synchronized state in T time steps. Here, $d$ was chosen quite large for the clarity of the figure. Note that, if the perturbation is still active at this point, the system still needs control in order to stay synchronized (batteries should still compensate the power imbalance)}
 \end{figure}
+
+The purpose of selecting the drivers according to a Gramian related metric is to minimize, on average, the amount of control energy needed. In other words, if we select the drivers randomly, we expect to need, on average, more energy to control the system. In figure 2, we draw 200 example systems of 15 nodes with random topologies, power distributions, and line capacities. These systems are initially at equilibrium and are perturbed as explained previously. For each system we find the driver set S using algorithm (X) and we draw a random driver set $S'$ such that $S$ and $S'$ have the same size, and such that $S'$ also provide full control of the system. We then compute the control signals and the corresponding control energies $\mathcal{E}_S$ and $\mathcal{E}_{S'}$ for both $S$ and $S'$. Each system can therefore be represented as a point with coordinates $(|S|, \mathcal{E}_S)$. On figure 2, we plot the densities of these points for the random case (left pannel) and the optimized case (right pannel). Regions in dark red contains a lot of points while regions in dark blue have very few points. Figure 2 shows that most of the systems considered tend to be controlled by the drivers of algorithm X with less energy and/or drivers than for the random case.
+
+\begin{figure}
+\label{fig:densities}
+\includegraphics[scale=.3]{rr}
+\caption{test}
+\end{figure}
+
+We investigate next how the topology of the grid affects the size of the control set. We consider first the case of an erdos renyi topology with probability of connection p. We show on Figure 3 how the size of the driver set evolves with p for different Gramian based metrics and for two levels of constraints : 
+
+\begin{itemize}
+\item Level 1 : full control
+\item Level 2 : full control + line capacities constraints + battery constraints (see algorithm X)
+\end{itemize}
+
+\begin{figure}
+\label{fig:erdos_renyi}
+\includegraphics[scale=.3]{graphique_1}
+\caption{ $ n_D $ against link probability p for erdos-renyi topologies ($ N=100 $). Curves are averaged over 100 realizations. The top three curves show the results for the three metrics taken into consideration when all constraints are considered (see Level 2 in the main text). The bottom three curves exhibit the results for the same metrics when only the full controllability constraint is considered (see Level 1 in the main text).}
+\end{figure}
+
+
+When p is close to zero, nodes tend to be very poorly connected such that we need to control almost all nodes in the grid. As p increases, the connectivity of the graph augments and the number of drivers decreases. At some point, the connectivity of the graph starts to harm its controllability, and more drivers are needed. This effect is in accordance with the litterature although it is less marked here because the topology has less influence in our model (recall that matrix A in the dynamics is not the adjacency matrix of the graph but a block matrix where one of the block is the Laplacian matrix of the graph). As expected, the driver sets for the level 2 of constraints are larger than for level 1 (for all metrics) because we impose far more constraints.
+
+
+
+Because transmission power grids are spatially and politically constrained (each contry has its own transmission grid which is interconnected with neighboring grids at some specific locations), we study the control in clustered graphs. More precisely, we use a block model $(N, N_{clusters}, p_{in}, p_{out} ) $ to generate random topologies where $ N $ is the number of nodes, $N_{clusters} $ is the number of clusters, $p_{in} $ is the probability that two nodes within the same cluster are linked, and $ p_{out} $ is the probability that two nodes in two distinct clusters are connected.
+
+\begin{figure}
+\label{fig:block_model_1}
+\includegraphics[scale=.25]{block_model_3}
+\caption{$n_D$ against $N_{clusters} $ for different values of $ p_{in} $ and $ p_{out} = 0.1 $. $ N=200 $ and curves are averaged over 100 realizations.}
+\end{figure}
+
+Figure 4 shows how the number of drivers evolves with the number of clusters for different values of $ p_{in} $ when $ p_{out} $ is fixed ($p_{out} =0.1$). For small values of $ p_{in} \sim p_{out} $ clusters are poorly marked, and the connectivity is low. The number of drivers in these conditions is large and increases slowly when the number of clusters augments. As $ p_{in} $ increases, the clusters becomes more densily connected such that within a cluster less drivers are required in order to control it. As the number of clusters grows, more drivers are required. For large values of $p_{in} $, the behavious is more complex. We see indeed that for $p_{in} = 0.9 $ and $N_{clusters} = 2$, almost $ 94\% $ of the nodes are needed for control, but this quantity first decreases with the addition of a few more clusters ($ 71\% $ for $ N_{clusters}=5 $), before increasing. This behavior can be explained by the fact that controlling a very dense network requires, in our settings, a very large portion of nodes to be drivers. Controlling one cluster alone thus requires to control almost all nodes within this cluster. Nevertheless, when a relatively small (compared to the number of nodes in the graph) number of clusters are interconnected with a few links, nodes in one cluster are able to control nodes in other clusters to which they are connected. As the number of clusters grows, the global connectivity increases rapidely, such that the number of drivers also rises. We show this behavior in more details in figure 5, where the number of drivers is plotted against $ p_{in} $ for $N=200$ and $N_{clusters} \in \{2,4,5\} $. For $N_{clusters} = 2 $ and $ p_{in} = 0.1 $ the number of drivers is large since the graph is poorly connected. When $p_{in} $ increases, $n_D$ decreases until a minimum value $n_D \sim 0.64 $ at $ p_{in} \sim 0.6 $. After this point, $n_D$ augments with $p_{in}$. For $N_{clusters} = 5 $, we do not see this behavior : $ n_D $ decreases continuously as $p_{in} $ increases as expected from the curves of figure 4.
+
+
+\begin{figure}
+\label{fig:block_model_2}
+\includegraphics[scale=.25]{block_model_4}
+\caption{$n_D$ against $ p_{in} $ for systems of $N=200 $, $p_{out} = 0.1 $, and for different values of $N_{clusters} $. The curves are averaged over 100 realizations.}
+\end{figure}
+
+
+Until now, we have considered all batteries to be equal, i.e they have the same capacity and charge/discharge rate. Although simple, this assumption might not be verified in practice where different types of batteries exist. Making a cost-oriented study where the location os various types of batteries is studied such that the tradeoff between costs and reliability is out of the scope of this paper. Nevertheless, we studied how the number of drivers behaves when the batteries have different capcities. More precisely, we draw the capacities of the batteries from a normal distribution $ \mathcal{N}( \mu_{\lambda}, \sigma_{\lambda} ) $ and keep a simple erdos-renyi topology for the power grid. Note that each node is assigned a capacity regardless of its caracteristics (degree, betweeness, and so on...). In figure 6, we plot $n_D$ as a function of the relative standard deviation of the battery capacity distribution $ \sigma_{\lambda} / \mu_{\lambda} $. We see that $n_D$ increases with the variance of the capacity distribution for all three gramian based metrics considered. Moreover, this rise is abrupt since $n_D$ goes from $ 60 \%$ for $\frac{\sigma_{\lambda}}{\mu_{\lambda}} \sim 0.15 $ to $100 \% $ for $\frac{\sigma_{\lambda}}{\mu_{\lambda}} \sim 0.27 $. 
+
+\begin{figure}
+\label{fig:batteries_variance}
+\includegraphics[scale=.37]{batteries_variance}
+\caption{$n_D$ against the relative standard deviation of the capacity distribution of the batteries $ \frac{ \sigma_{ \lambda } }{ \mu_{ \lambda} } $. The dots are averages over 100 realizations and the curves are obtained using a Savitzky-Golay filter, each color shows the results for a given metric. The graphs are erdos-renyi with $N=100$ and $p=0.3$, and $\mu_{\lambda} = 100 $ units. }
+\end{figure} 
+
+Real power grids topologies are known to be far from random such that using the erdos-renyi model probably do not give a realistic insight into the control of these systems. Depending on the voltage level 
+
+In this section, we provide some results in order to illustrate the work described above. We use a small 10 prosumers example, connected with a random topology. The line maximum capacities are selected  according to a normal distribution $\mathcal{N}(\mu_l,\sigma_l)$.  The power distribution is chosen as a zero mean normal distribution $ \mathcal{N}(0,\sigma_p) $, and the samples should satisfy the constraints \ref{synchro_constraint} and \ref{zero_sum_constraint}. Obviously, $\mu_l$, $\sigma_l$, and $\sigma_p$ should be chosen such that, without any perturbation, the lines are not already overloaded.
+
+
 
 Once the synchronized state is reached, we apply a perturbation to the power distribution such that there is a mismatch between production and demand (constraint \ref{zero_sum_constraint} is not satisfied). We denote by $d$ the delay between the perturbation and the start of the control phase (see figure \ref{fig:frequecies}). $d$ depends on how fast the perturbation can be identified and located, the control inputs calculated and communicated without error through the communication network.
 
