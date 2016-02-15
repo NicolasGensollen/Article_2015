@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  9 FEB 2016 15:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  15 FEB 2016 17:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -767,182 +767,187 @@ LaTeX Info: Redefining \up on input line 42.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 88.
+[1{c:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 98.
+
 (c:/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 88.
+LaTeX Font Info:    Try loading font information for U+msb on input line 98.
 
 (c:/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{c:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-
-] [2]
-Underfull \hbox (badness 4168) in paragraph at lines 249--250
+) [2] [3]
+Underfull \hbox (badness 4168) in paragraph at lines 259--260
 []\T1/ptm/m/n/10 Using the Gramian-based met-ric $\OMS/cmsy/m/n/10 M$\T1/ptm/m/
 n/10 , let $\OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S\OT1/cmr/m/n/1
 0 ) =
  []
 
-[3]
 
-Package caption Warning: \label without proper \caption on input line 336.
+Package caption Warning: \label without proper \caption on input line 344.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 4 undefined on input line 333.
+LaTeX Warning: Reference `algo_1' on page 4 undefined on input line 343.
 
 
-Package caption Warning: \label without proper \caption on input line 336.
+Package caption Warning: \label without proper \caption on input line 344.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 4 undefined on input line 333.
+LaTeX Warning: Reference `algo_1' on page 4 undefined on input line 343.
 
-
-Overfull \hbox (3.18854pt too wide) in paragraph at lines 339--347
+[4]
+Overfull \hbox (3.18854pt too wide) in paragraph at lines 349--357
 []\T1/ptm/b/n/10 while  $\OML/cmm/m/it/9 Not  []$
  []
 
-[4] <frequencies.pdf, id=36, 722.7pt x 433.62pt>
+<frequencies.pdf, id=29, 722.7pt x 433.62pt>
 File: frequencies.pdf Graphic file (type pdf)
  <use frequencies.pdf>
-Package pdftex.def Info: frequencies.pdf used on input line 364.
+Package pdftex.def Info: frequencies.pdf used on input line 374.
 (pdftex.def)             Requested size: 274.62885pt x 164.77731pt.
 
-Overfull \hbox (22.62885pt too wide) in paragraph at lines 364--365
-[][] 
- []
-
-<rr.pdf, id=37, 867.24pt x 361.35pt>
-File: rr.pdf Graphic file (type pdf)
- <use rr.pdf>
-Package pdftex.def Info: rr.pdf used on input line 372.
-(pdftex.def)             Requested size: 260.17401pt x 108.40584pt.
-
-Overfull \hbox (8.17401pt too wide) in paragraph at lines 372--373
+Overfull \hbox (22.62885pt too wide) in paragraph at lines 374--375
 [][] 
  []
 
 
-Underfull \vbox (badness 1803) has occurred while \output is active []
+Package caption Warning: \label without proper \caption on input line 381.
+See the caption package documentation for explanation.
 
 
-<graphique_1.pdf, id=38, 1011.78pt x 433.62pt>
+LaTeX Warning: Reference `fig:densities' on page 5 undefined on input line 378.
+
+
+<energy.pdf, id=30, 722.7pt x 722.7pt>
+File: energy.pdf Graphic file (type pdf)
+ <use energy.pdf>
+Package pdftex.def Info: energy.pdf used on input line 384.
+(pdftex.def)             Requested size: 252.94878pt x 252.94878pt.
+
+Overfull \hbox (0.94878pt too wide) in paragraph at lines 384--385
+[][] 
+ []
+
+<graphique_1.pdf, id=31, 1011.78pt x 433.62pt>
 File: graphique_1.pdf Graphic file (type pdf)
  <use graphique_1.pdf>
-Package pdftex.def Info: graphique_1.pdf used on input line 385.
+Package pdftex.def Info: graphique_1.pdf used on input line 397.
 (pdftex.def)             Requested size: 303.53633pt x 130.087pt.
 
-Overfull \hbox (51.53633pt too wide) in paragraph at lines 385--386
+Overfull \hbox (51.53633pt too wide) in paragraph at lines 397--398
 [][] 
  []
 
-[5 <./frequencies.pdf> <./rr.pdf
+[5 <./frequencies.pdf>] <block_model_3.pdf, id=82, 1084.05pt x 578.16pt>
+File: block_model_3.pdf Graphic file (type pdf)
 
-pdfTeX warning: pdflatex.exe (file ./rr.pdf): PDF inclusion: multiple pdfs with
- page group included in a single page
-> <./graphique_1.pdf
+<use block_model_3.pdf>
+Package pdftex.def Info: block_model_3.pdf used on input line 410.
+(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
+
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 410--411
+[][] 
+ []
+
+[6 <./energy.pdf> <./graphique_1.pdf
 
 pdfTeX warning: pdflatex.exe (file ./graphique_1.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
->] <block_model_3.pdf, id=159, 1084.05pt x 578.16pt>
-File: block_model_3.pdf Graphic file (type pdf)
- <use block_model_3.pdf>
-Package pdftex.def Info: block_model_3.pdf used on input line 398.
-(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
+> <./block_model_3.pdf
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 398--399
-[][] 
- []
-
-
-Underfull \vbox (badness 1062) has occurred while \output is active []
-
-
-<block_model_4.pdf, id=160, 1084.05pt x 578.16pt>
+pdfTeX warning: pdflatex.exe (file ./block_model_3.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+>] <block_model_4.pdf, id=224, 1084.05pt x 578.16pt>
 File: block_model_4.pdf Graphic file (type pdf)
  <use block_model_4.pdf>
-Package pdftex.def Info: block_model_4.pdf used on input line 407.
+Package pdftex.def Info: block_model_4.pdf used on input line 419.
 (pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 407--408
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 419--420
 [][] 
  []
 
-<batteries_variance.pdf, id=161, 722.7pt x 433.62pt>
+<batteries_variance.pdf, id=225, 722.7pt x 433.62pt>
 File: batteries_variance.pdf Graphic file (type pdf)
 
 <use batteries_variance.pdf>
-Package pdftex.def Info: batteries_variance.pdf used on input line 416.
+Package pdftex.def Info: batteries_variance.pdf used on input line 428.
 (pdftex.def)             Requested size: 267.3948pt x 160.43689pt.
 
-Overfull \hbox (15.3948pt too wide) in paragraph at lines 416--417
+Overfull \hbox (15.3948pt too wide) in paragraph at lines 428--429
 [][] 
  []
 
 
-Package caption Warning: \label without proper \caption on input line 363.
+Package caption Warning: \label without proper \caption on input line 371.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:frequecies' on page 6 undefined on input line 426
+LaTeX Warning: Reference `fig:frequecies' on page 7 undefined on input line 438
 .
 
-[6 <./block_model_3.pdf> <./block_model_4.pdf
-
-pdfTeX warning: pdflatex.exe (file ./block_model_4.pdf): PDF inclusion: multipl
-e pdfs with page group included in a single page
->] <energy_vs_delay2.pdf, id=253, 722.7pt x 361.35pt>
+<energy_vs_delay2.pdf, id=226, 722.7pt x 361.35pt>
 File: energy_vs_delay2.pdf Graphic file (type pdf)
-
-<use energy_vs_delay2.pdf>
-Package pdftex.def Info: energy_vs_delay2.pdf used on input line 433.
+ <use energy_vs_delay2.pdf>
+Package pdftex.def Info: energy_vs_delay2.pdf used on input line 445.
 (pdftex.def)             Requested size: 274.62885pt x 137.31442pt.
 
-Overfull \hbox (22.62885pt too wide) in paragraph at lines 433--434
+Overfull \hbox (22.62885pt too wide) in paragraph at lines 445--446
 [][] 
  []
 
 
-Package caption Warning: \label without proper \caption on input line 336.
+Package caption Warning: \label without proper \caption on input line 344.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 434.
+LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 446.
 
 
-Package caption Warning: \label without proper \caption on input line 336.
+Package caption Warning: \label without proper \caption on input line 344.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 434.
+LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 446.
 
 
-Package caption Warning: \label without proper \caption on input line 432.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:energy_vs_delay' on page 7 undefined on input lin
-e 437.
-
-
-Package caption Warning: \label without proper \caption on input line 336.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 437.
-
-
-Package caption Warning: \label without proper \caption on input line 432.
+Package caption Warning: \label without proper \caption on input line 442.
 See the caption package documentation for explanation.
 
 
 LaTeX Warning: Reference `fig:energy_vs_delay' on page 7 undefined on input lin
-e 437.
+e 449.
 
-(./Article.bbl
+
+Package caption Warning: \label without proper \caption on input line 344.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `algo_1' on page 7 undefined on input line 449.
+
+
+Package caption Warning: \label without proper \caption on input line 442.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:energy_vs_delay' on page 7 undefined on input lin
+e 449.
+
+[7 <./block_model_4.pdf> <./batteries_variance.pdf
+
+pdfTeX warning: pdflatex.exe (file ./batteries_variance.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+> <./energy_vs_delay2.pdf
+
+pdfTeX warning: pdflatex.exe (file ./energy_vs_delay2.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>] (./Article.bbl
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `English'. Using the pattern for
 ** the default language instead.
@@ -967,23 +972,24 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[7 <./batteries_variance.pdf> <./energy_vs_delay2.pdf
+[8
 
-pdfTeX warning: pdflatex.exe (file ./energy_vs_delay2.pdf): PDF inclusion: mult
-iple pdfs with page group included in a single page
->] (./Article.aux)
+] (./Article.aux)
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  6788 strings out of 493054
- 100709 string characters out of 6138326
+ 100729 string characters out of 6138326
  183878 words of memory out of 5000000
  10184 multiletter control sequences out of 15000+600000
  110783 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,38p,2069b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,10n,38p,2072b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2015/texmf-dist/fo
 nts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2015/texmf-dist/fonts/t
@@ -997,17 +1003,16 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2015/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2015/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr9.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2015/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2015/texmf-dist/fonts/
-type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
-mbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texl
-ive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Article.pdf (7 pages, 4724240 bytes).
+0.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2015/texmf-d
+ist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/ur
+w/times/utmbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pf
+b><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Article.pdf (8 pages, 581360 bytes).
 PDF statistics:
- 409 PDF objects out of 1000 (max. 8388607)
- 151 compressed objects within 2 object streams
+ 421 PDF objects out of 1000 (max. 8388607)
+ 162 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
