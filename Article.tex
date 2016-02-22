@@ -212,8 +212,10 @@ F(X \cup \{ x \} ) - F(X) \geq F(Y \cup \{ x \} ) - F(Y)
 
 \begin{figure}
 	\label{fig:submodular}
-	\includegraphics[scale=.5]{submodular}
+	\begin{center}
+	\includegraphics[scale=.3]{./figure_1/figure_1}
 	\caption{Submodularity example with sensor placements.}
+	\end{center}
 \end{figure}
 
 This basically means that submodular functions exhibit a diminishing return property which makes them particularly interesting for optimization. A very intuitive example is the optimum placement of sensors in an area (see figure \ref{fig:submodular}). Sensors can be placed on a grid of locations and function F computes the surface of the space that is being sensed. Note first that adding a new sensor i to the current set S cannot decrease the value of F : $F(S+\{i\})>=F(S)$. Furthermore, if we add sensor i to a small set $S_1$ we tend to get larger improvements than if we add i to a larger set $S_2 \supset S_1$.
@@ -370,7 +372,7 @@ For a direct illustrative application, we chose a small system of 10 nodes conne
 
 \begin{figure}
 \label{fig:frequecies}
-\includegraphics[scale=.38]{frequencies}
+\includegraphics[scale=.38]{./figure_2/figure_2}
 \caption{Time series of the N frequencies $\omega_i$ (phase angles are not shown for clarity). $d$ is the delay between the perturbation and the begining of the control phase that bring the system bak in the synchronized state in T time steps. Here, $d$ was chosen quite large for the clarity of the figure. Note that, if the perturbation is still active at this point, the system still needs control in order to stay synchronized (batteries should still compensate the power imbalance)}
 \end{figure}
 
@@ -380,7 +382,7 @@ The purpose of selecting the drivers according to a Gramian related metric is to
 
 \begin{figure}
 \label{fig:densities}
-\includegraphics[scale=.35]{energy}
+\includegraphics[scale=.35]{./figure_3/figure_3}
 \caption{Control energy $log(\mathcal{E})$ against size of control set $n_D$ for random and optimized driver sets. Topologies are drawn from a Barabasi-Albert model with $ N_{nodes} = 50 $, power and line capacity distributions are random. For both case, $10^4$ instances are considered and the results are displayed as dots. The lines shows the average for both case. }
 \end{figure}
 
@@ -393,7 +395,7 @@ We investigate next how the topology of the grid affects the size of the control
 
 \begin{figure}
 \label{fig:erdos_renyi}
-\includegraphics[scale=.3]{graphique_1}
+\includegraphics[scale=.25]{./figure_4/figure_4}
 \caption{ $ n_D $ against link probability p for erdos-renyi topologies ($ N=100 $). Curves are averaged over 100 realizations. The top three curves show the results for the three metrics taken into consideration when all constraints are considered (see Level 2 in the main text). The bottom three curves exhibit the results for the same metrics when only the full controllability constraint is considered (see Level 1 in the main text).}
 \end{figure}
 
@@ -406,7 +408,7 @@ Because transmission power grids are spatially and politically constrained (each
 
 \begin{figure}
 \label{fig:block_model_1}
-\includegraphics[scale=.25]{block_model_3}
+\includegraphics[scale=.25]{./figure_5/figure_5}
 \caption{$n_D$ against $N_{clusters} $ for different values of $ p_{in} $ and $ p_{out} = 0.1 $. $ N=200 $ and curves are averaged over 100 realizations.}
 \end{figure}
 
@@ -415,7 +417,7 @@ Figure 4 displays how the number of drivers evolves with the number of clusters 
 
 \begin{figure}
 \label{fig:block_model_2}
-\includegraphics[scale=.25]{block_model_4}
+\includegraphics[scale=.25]{./figure_6/figure_6}
 \caption{$n_D$ against $ p_{in} $ for systems of $N=200 $, $p_{out} = 0.1 $, and for different values of $N_{clusters} $. The curves are averaged over 100 realizations.}
 \end{figure}
 
@@ -424,7 +426,7 @@ Until now, we have considered all batteries to be equal, i.e they have the same 
 
 \begin{figure}
 \label{fig:batteries_variance}
-\includegraphics[scale=.37]{batteries_variance}
+\includegraphics[scale=.37]{./figure_7/figure_7}
 \caption{$n_D$ against the relative standard deviation of the capacity distribution of the batteries $ \frac{ \sigma_{ \lambda } }{ \mu_{ \lambda} } $. The dots are averages over 100 realizations and the curves are obtained using a Savitzky-Golay filter, each color shows the results for a given metric. The graphs are erdos-renyi with $N=100$ and $p=0.3$, and $\mu_{\lambda} = 100 $ units. }
 \end{figure} 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  17 FEB 2016 12:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  22 FEB 2016 12:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -779,26 +779,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ] [2]
-<submodular.png, id=20, 498.06075pt x 375.804pt>
-File: submodular.png Graphic file (type png)
- <use submodular.png>
-Package pdftex.def Info: submodular.png used on input line 215.
-(pdftex.def)             Requested size: 249.02975pt x 187.90154pt.
+<./figure_1/figure_1.pdf, id=20, 597.432pt x 845.07718pt>
+File: ./figure_1/figure_1.pdf Graphic file (type pdf)
+
+<use ./figure_1/figure_1.pdf>
+Package pdftex.def Info: ./figure_1/figure_1.pdf used on input line 216.
+(pdftex.def)             Requested size: 179.23097pt x 253.5251pt.
 
 
 Package caption Warning: \label without proper \caption on input line 214.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:submodular' on page 3 undefined on input line 219
+LaTeX Warning: Reference `fig:submodular' on page 3 undefined on input line 221
 .
 
 
-LaTeX Warning: Command \textsection invalid in math mode on input line 223.
+LaTeX Warning: Command \textsection invalid in math mode on input line 225.
 
 Missing character: There is no Ÿ in font cmr10!
-[3 <./submodular.png>]
-Underfull \hbox (badness 4168) in paragraph at lines 258--259
+[3 <./figure_1/figure_1.pdf>]
+Underfull \hbox (badness 4168) in paragraph at lines 260--261
 []\T1/ptm/m/n/10 Using the Gramian-based met-ric $\OMS/cmsy/m/n/10 M$\T1/ptm/m/
 n/10 , let $\OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S\OT1/cmr/m/n/1
 0 ) =
@@ -806,165 +807,166 @@ n/10 , let $\OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S\OT1/cmr/m/n/1
 
 [4]
 
-Package caption Warning: \label without proper \caption on input line 345.
+Package caption Warning: \label without proper \caption on input line 347.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 5 undefined on input line 342.
+LaTeX Warning: Reference `algo_1' on page 5 undefined on input line 344.
 
 
-Package caption Warning: \label without proper \caption on input line 345.
+Package caption Warning: \label without proper \caption on input line 347.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 5 undefined on input line 342.
+LaTeX Warning: Reference `algo_1' on page 5 undefined on input line 344.
 
 
-Overfull \hbox (3.18854pt too wide) in paragraph at lines 348--356
+Overfull \hbox (3.18854pt too wide) in paragraph at lines 350--358
 []\T1/ptm/b/n/10 while  $\OML/cmm/m/it/9 Not  []$
  []
 
-<frequencies.pdf, id=30, 722.7pt x 433.62pt>
-File: frequencies.pdf Graphic file (type pdf)
- <use frequencies.pdf>
-Package pdftex.def Info: frequencies.pdf used on input line 373.
+<./figure_2/figure_2.pdf, id=36, 722.7pt x 433.62pt>
+File: ./figure_2/figure_2.pdf Graphic file (type pdf)
+
+<use ./figure_2/figure_2.pdf>
+Package pdftex.def Info: ./figure_2/figure_2.pdf used on input line 375.
 (pdftex.def)             Requested size: 274.62885pt x 164.77731pt.
 
-Overfull \hbox (22.62885pt too wide) in paragraph at lines 373--374
+Overfull \hbox (22.62885pt too wide) in paragraph at lines 375--376
 [][] 
  []
 
 
-Package caption Warning: \label without proper \caption on input line 382.
+Package caption Warning: \label without proper \caption on input line 384.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:densities' on page 5 undefined on input line 377.
+LaTeX Warning: Reference `fig:densities' on page 5 undefined on input line 379.
 
 
-[5 <./frequencies.pdf>] <energy.pdf, id=81, 722.7pt x 722.7pt>
-File: energy.pdf Graphic file (type pdf)
+[5 <./figure_2/figure_2.pdf>]
+<./figure_3/figure_3.pdf, id=87, 722.7pt x 722.7pt>
+File: ./figure_3/figure_3.pdf Graphic file (type pdf)
 
-<use energy.pdf>
-Package pdftex.def Info: energy.pdf used on input line 383.
+<use ./figure_3/figure_3.pdf>
+Package pdftex.def Info: ./figure_3/figure_3.pdf used on input line 385.
 (pdftex.def)             Requested size: 252.94878pt x 252.94878pt.
 
-Overfull \hbox (0.94878pt too wide) in paragraph at lines 383--384
+Overfull \hbox (0.94878pt too wide) in paragraph at lines 385--386
 [][] 
  []
 
-<graphique_1.pdf, id=82, 1011.78pt x 433.62pt>
-File: graphique_1.pdf Graphic file (type pdf)
- <use graphique_1.pdf>
-Package pdftex.def Info: graphique_1.pdf used on input line 396.
-(pdftex.def)             Requested size: 303.53633pt x 130.087pt.
+<./figure_4/figure_4.pdf, id=88, 1084.05pt x 578.16pt>
+File: ./figure_4/figure_4.pdf Graphic file (type pdf)
 
-Overfull \hbox (51.53633pt too wide) in paragraph at lines 396--397
-[][] 
- []
-
-<block_model_3.pdf, id=83, 1084.05pt x 578.16pt>
-File: block_model_3.pdf Graphic file (type pdf)
- <use block_model_3.pdf>
-Package pdftex.def Info: block_model_3.pdf used on input line 409.
+<use ./figure_4/figure_4.pdf>
+Package pdftex.def Info: ./figure_4/figure_4.pdf used on input line 398.
 (pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 409--410
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 398--399
 [][] 
  []
 
-[6 <./energy.pdf> <./graphique_1.pdf
+<./figure_5/figure_5.pdf, id=89, 1084.05pt x 578.16pt>
+File: ./figure_5/figure_5.pdf Graphic file (type pdf)
 
-pdfTeX warning: pdflatex.exe (file ./graphique_1.pdf): PDF inclusion: multiple 
-pdfs with page group included in a single page
->] <block_model_4.pdf, id=177, 1084.05pt x 578.16pt>
-File: block_model_4.pdf Graphic file (type pdf)
- <use block_model_4.pdf>
-Package pdftex.def Info: block_model_4.pdf used on input line 418.
+<use ./figure_5/figure_5.pdf>
+Package pdftex.def Info: ./figure_5/figure_5.pdf used on input line 411.
 (pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 418--419
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 411--412
 [][] 
  []
 
+[6 <./figure_3/figure_3.pdf> <./figure_4/figure_4.pdf
 
-Underfull \vbox (badness 1062) has occurred while \output is active []
+pdfTeX warning: pdflatex.exe (file ./figure_4/figure_4.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>] <./figure_6/figure_6.pdf, id=184, 1084.05pt x 578.16pt>
+File: ./figure_6/figure_6.pdf Graphic file (type pdf)
 
+<use ./figure_6/figure_6.pdf>
+Package pdftex.def Info: ./figure_6/figure_6.pdf used on input line 420.
+(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
-<batteries_variance.pdf, id=178, 722.7pt x 433.62pt>
-File: batteries_variance.pdf Graphic file (type pdf)
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 420--421
+[][] 
+ []
 
-<use batteries_variance.pdf>
-Package pdftex.def Info: batteries_variance.pdf used on input line 427.
+<./figure_7/figure_7.pdf, id=185, 722.7pt x 433.62pt>
+File: ./figure_7/figure_7.pdf Graphic file (type pdf)
+
+<use ./figure_7/figure_7.pdf>
+Package pdftex.def Info: ./figure_7/figure_7.pdf used on input line 429.
 (pdftex.def)             Requested size: 267.3948pt x 160.43689pt.
 
-Overfull \hbox (15.3948pt too wide) in paragraph at lines 427--428
+Overfull \hbox (15.3948pt too wide) in paragraph at lines 429--430
 [][] 
  []
 
+[7 <./figure_5/figure_5.pdf> <./figure_6/figure_6.pdf
 
-Package caption Warning: \label without proper \caption on input line 372.
+pdfTeX warning: pdflatex.exe (file ./figure_6/figure_6.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+> <./figure_7/figure_7.pdf
+
+pdfTeX warning: pdflatex.exe (file ./figure_7/figure_7.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>]
+
+Package caption Warning: \label without proper \caption on input line 374.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:frequecies' on page 7 undefined on input line 437
+LaTeX Warning: Reference `fig:frequecies' on page 8 undefined on input line 439
 .
 
-[7 <./block_model_3.pdf> <./block_model_4.pdf
-
-pdfTeX warning: pdflatex.exe (file ./block_model_4.pdf): PDF inclusion: multipl
-e pdfs with page group included in a single page
-> <./batteries_variance.pdf
-
-pdfTeX warning: pdflatex.exe (file ./batteries_variance.pdf): PDF inclusion: mu
-ltiple pdfs with page group included in a single page
->] <energy_vs_delay2.pdf, id=313, 722.7pt x 361.35pt>
+<energy_vs_delay2.pdf, id=321, 722.7pt x 361.35pt>
 File: energy_vs_delay2.pdf Graphic file (type pdf)
-
-<use energy_vs_delay2.pdf>
-Package pdftex.def Info: energy_vs_delay2.pdf used on input line 444.
+ <use energy_vs_delay2.pdf>
+Package pdftex.def Info: energy_vs_delay2.pdf used on input line 446.
 (pdftex.def)             Requested size: 274.62885pt x 137.31442pt.
 
-Overfull \hbox (22.62885pt too wide) in paragraph at lines 444--445
+Overfull \hbox (22.62885pt too wide) in paragraph at lines 446--447
 [][] 
  []
 
 
-Package caption Warning: \label without proper \caption on input line 345.
+Package caption Warning: \label without proper \caption on input line 347.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 8 undefined on input line 445.
+LaTeX Warning: Reference `algo_1' on page 8 undefined on input line 447.
 
 
-Package caption Warning: \label without proper \caption on input line 345.
+Package caption Warning: \label without proper \caption on input line 347.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `algo_1' on page 8 undefined on input line 445.
+LaTeX Warning: Reference `algo_1' on page 8 undefined on input line 447.
 
 
-Package caption Warning: \label without proper \caption on input line 443.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:energy_vs_delay' on page 8 undefined on input lin
-e 448.
-
-
-Package caption Warning: \label without proper \caption on input line 345.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `algo_1' on page 8 undefined on input line 448.
-
-
-Package caption Warning: \label without proper \caption on input line 443.
+Package caption Warning: \label without proper \caption on input line 445.
 See the caption package documentation for explanation.
 
 
 LaTeX Warning: Reference `fig:energy_vs_delay' on page 8 undefined on input lin
-e 448.
+e 450.
+
+
+Package caption Warning: \label without proper \caption on input line 347.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `algo_1' on page 8 undefined on input line 450.
+
+
+Package caption Warning: \label without proper \caption on input line 445.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `fig:energy_vs_delay' on page 8 undefined on input lin
+e 450.
 
 (./Article.bbl
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
@@ -997,9 +999,9 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6799 strings out of 493054
- 100913 string characters out of 6138326
- 183947 words of memory out of 5000000
+ 6804 strings out of 493054
+ 101159 string characters out of 6138326
+ 182947 words of memory out of 5000000
  10192 multiletter control sequences out of 15000+600000
  110783 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1023,10 +1025,10 @@ texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/20
 ist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pf
 b><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Article.pdf (8 pages, 829640 bytes).
+Output written on Article.pdf (8 pages, 3059037 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
- 163 compressed objects within 2 object streams
+ 431 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
