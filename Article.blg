@@ -14,45 +14,45 @@ Database file #1: Article.bib
 Warning--empty journal in Liu2015
 
 Done.
-You've used 8 entries,
+You've used 11 entries,
             4087 wiz_defined-function locations,
-            887 strings with 8931 characters,
-and the built_in function-call counts, 6531 in all, are:
-= -- 562
-> -- 136
-< -- 58
-+ -- 72
-- -- 22
-* -- 352
-:= -- 1061
-add.period$ -- 17
-call.type$ -- 8
-change.case$ -- 10
-chr.to.int$ -- 126
-cite$ -- 9
-duplicate$ -- 450
-empty$ -- 467
-format.name$ -- 29
-if$ -- 1477
+            906 strings with 9362 characters,
+and the built_in function-call counts, 8386 in all, are:
+= -- 711
+> -- 185
+< -- 69
++ -- 98
+- -- 32
+* -- 441
+:= -- 1360
+add.period$ -- 23
+call.type$ -- 11
+change.case$ -- 13
+chr.to.int$ -- 147
+cite$ -- 12
+duplicate$ -- 592
+empty$ -- 614
+format.name$ -- 41
+if$ -- 1901
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 72
-newline$ -- 57
-num.names$ -- 10
-pop$ -- 143
+int.to.str$ -- 11
+missing$ -- 100
+newline$ -- 68
+num.names$ -- 13
+pop$ -- 209
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 494
+skip$ -- 633
 stack$ -- 0
-substring$ -- 305
-swap$ -- 389
-text.length$ -- 16
+substring$ -- 357
+swap$ -- 501
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 8
+type$ -- 11
 warning$ -- 1
-while$ -- 37
-width$ -- 9
-write$ -- 118
+while$ -- 43
+width$ -- 13
+write$ -- 148
 (There was 1 warning)

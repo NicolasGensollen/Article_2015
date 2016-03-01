@@ -233,14 +233,20 @@ We assume the control of a subset of the nodes that we call driver nodes. In our
 
 
 \begin{equation}
+\label{eq:final_with_control}
  Y(t+\Delta t) = A Y(t) + B u(t) 
 \end{equation}
 
 
-Where the control matrix B is an indicator of the driver nodes, and $ u(t) $ represents the control vector input at time t. The system is said to be controllable in T steps if it can be steered from any initial state $ Y_0 $ to any final state $ Y_f $ through a sequence of control inputs $ u(t) $. If the system is controllable, there might be more than one sequence of control inputs that could achieve such a thing. Among all these possibilities, we are interested in the one that requires the minimum amount of energy \cite{Yan2012}. Let $ \mathcal{E} = \int_{t_0}^{t_0+T} \Vert u(t) \Vert^2 dt $ be the energy used for the control of the system. It can be shown \cite{Liu2015} that the control input sequence that minimizes the control energy can be written as :
+Where the control matrix B is an indicator of the driver nodes, and $ u(t) $ represents the control vector input at time t. The system is said to be controllable in T steps if it can be steered from any initial state $ Y_0 $ to any final state $ Y_f $ through a sequence of control inputs $ u(t) $. 
+
+Controllability in complex network became popular with the well-known structural controllability framework introduced by Lin \cite{1100557}. This approach relates the search of the minimum driver set to a maximum matching in a bipartite graph, which can be done with the Hopcroft-Karp algorithm in $ O(|E|\sqrt{|V|}) $ in the worst case. This requires that the system $(A,B)$ is a structured system, meaning that all elements in A and B are either fixed zeros or independant free parameters. In such a situation, structural control is extremely powerfull since it enables us to discuss a network's controllability relatively quickly even if we do not know the exact weights of the edges. Note however that the independance of the parameters is a key assumption. If A is the adjacency matrix of an undirected network for instance, independance is not true since A is symetric, and one must use different tools to study controllability \cite{Yuan2014}. 
+
+On the other hand, if the system is controllable, there might be more than one sequence of control inputs $u(t)$ that could drive it from $Y_0$ to $Y_f$. Among all these possibilities, optimal control is devoted to find the sequence that minimize some cost function J that can depend on the sates of the system $Y(t)$, the control inputs $u(t)$, and the final state $Y(T)$. As explained above, we are interested in the sequence that requires the minimum amount of control energy \cite{Yan2012}. Let $ \mathcal{E} = \int_{t_0}^{t_0+T} \Vert u(t) \Vert^2 dt $ be the energy used for the control of the system. It can be shown \cite{Liu2015} that the control input sequence that minimizes the control energy can be written as :
 
 
 \begin{equation}
+\label{eq:ustar}
  u^{\star}(t) = B^T(A^T)^{T-t-1}W^{-1}(T)\nu(T)
 \end{equation}
 
@@ -255,9 +261,9 @@ where $ \nu(T) = Y_f - A^T Y_0 $ is the difference between the desired final sta
 
 Not surprisingly, the control energy depends on the initial and final states as well as on the inverse of the Gramian. In our prosumer case, we want to find the best battery placement, whose quality should not depend on the initial and final states. Indeed, these states as well as  the power  distribution $ \Psi $ are susceptible to change, and we would like to perform well, on average, whatever the states and distributions. Therefore, we concentrate on  the Gramian as a way to quantify the average controllability. 
 
-Since the control energy is related to $ W^{-1} $, small energies are obtained from "large" W. In [], the authors introduce several Gramian-based metrics that have concrete meanings in terms of the system controllability. For example, the trace of the inverse Gramian ($ Tr[ W^{-1}(T)] $) quantifies the average control energy necessary to move the system around the state space. These metrics measures some notions of the control allowed by a given driver node set. But they can be understood the other way around : what drivers should one select as to optimize a given control-based metric ? 
+Since the control energy is related to $ W^{-1} $, small energies are obtained from "large" W. In \cite{Summers2014}, the authors introduce several Gramian-based metrics that have concrete meanings in terms of the system controllability. For example, the trace of the inverse Gramian ($ Tr[ W^{-1}(T)] $) quantifies the average control energy necessary to move the system around the state space. These metrics measures some notions of the control allowed by a given driver node set. But they can be understood the other way around : what drivers should one select as to optimize a given control-based metric ? 
 
-Using the Gramian-based metric $ \mathcal{M} $, let $ F(S) =\mathcal{M}(W_S(T))$, where $ W_S(T) $  is the Gramian matrix based on the driver node set S. [] showed that for some metrics, F is a submodular set function. This means that, for these metrics, we can use the greedy heuristic discussed above in order to maximize F.
+Using the Gramian-based metric $ \mathcal{M} $, let $ F(S) =\mathcal{M}(W_S(T))$, where $ W_S(T) $  is the Gramian matrix based on the driver node set S. \cite{Summers2014} showed that for some metrics, F is a submodular set function. This means that, for these metrics, we can use the greedy heuristic discussed above in order to maximize F.
 
 
 
@@ -266,7 +272,7 @@ Using the Gramian-based metric $ \mathcal{M} $, let $ F(S) =\mathcal{M}(W_S(T))$
 
 \subsection{Controllability Constraints}
 
- Considering the dynamic of equation (), we notice that the Gramian based on the transition matrix A is never invertible, meaning that the system should not be controllable. It is easy to see that, indeed, we do not have full control because of the last row of the matrix. Nevertheless, as this row was only added in order to include the power distribution inside A, we do not need to control the system along this "fake" dimension. That is, we only seek the control of the system in the first $ 2N $ dimensions of the space (N phase angles $ \theta_i$ and N frequencies $\omega_i$). Therefore, whenever $ rank[ W(T) ] = 2N$, we will use the Moore-Penrose pseudo inverse of the gramian $ W^\dagger(T) $.
+ Considering the dynamic of equation \ref{eq:final_with_control}, we notice that the Gramian based on the transition matrix A is never invertible, meaning that the system should not be controllable. It is easy to see that, indeed, we do not have full control because of the last row of the matrix. Nevertheless, as this row was only added in order to include the power distribution inside A, we do not need to control the system along this "fake" dimension. That is, we only seek the control of the system in the first $ 2N $ dimensions of the space (N phase angles $ \theta_i$ and N frequencies $\omega_i$). Therefore, whenever $ rank[ W(T) ] = 2N$, we will use the Moore-Penrose pseudo inverse of the gramian $ W^\dagger(T) $.
 
 
 \subsection{Flow Constraints}
@@ -344,8 +350,6 @@ If, for a given $ u^{\star} $, the constraints of eq. \ref{level_constraints} an
 We propose the following greedy algorithm in order to find the smallest set of locations that minimizes the average control energy and satisfy the constraints. We assume here that the system is in a given initial state $ Y_0 $ and we want to reach a desired final state $ Y_f$  in $ T $ time steps. The algorithm \ref{algo_1} starts with an empty set and, as long as that constraints are not satisfied, it increases the size of the set. For a given size k, the set $ S_k $ is found using lazy greedy submodular optimization of a Gramian-based set function F. In practice we use $ F(S) = -Tr \left[ W_S^{\dagger}(T) \right] $ which quantifies the average energy required to move the system around the controllable subspace. The algorithm \ref{algo_1} returns then the tuple $ (k,S_k,u^{\star}) $ such that $ S_k $ is the smallest set that minimizes the average control energy and, in this case, satisfies the constraints with control $u^{\star}$. 
 
 \begin{algorithm}
-	\label{algo_1}
-
         \begin{algorithmic}
                 \While{  \small $ Not\ \left\{ \begin{array}{lll} 
                                               rank \left[ W_{S_k}(T) \right] < 2N\ and \\ 
@@ -360,6 +364,8 @@ We propose the following greedy algorithm in order to find the smallest set of l
     \State $ u^{\star}(t)\ \ \ \ \ \ \gets OptControl( S_{k} )$ 
 \EndWhile
         \end{algorithmic}
+        \caption{Greedy submodular optimization with constraints}
+        \label{algo_1}
 \end{algorithm}
 \normalsize
 
@@ -368,35 +374,35 @@ We propose the following greedy algorithm in order to find the smallest set of l
 \section{Results}
 \label{sec:Results}
 
-For a direct illustrative application, we chose a small system of 10 nodes connected with an erdos-renyi topology. The power distribution and the capacities of the lines are selected randomly such that the system is at equilibrium. Therefore, the production matches the consumption, no line is overloaded and all nodes are synchronized to the main frequency. We use the greedy algorithm (X) based on the trace of the inverse Gramian as to select the driver set $S$. At a given time $ t_k $, we introduce a small perturbation in the form of a mismatch between the production and consumption : $P_i(t_k) = P_i(t_{k-1}) + \delta P$ for some random node i. Consequently, the frequencies $ \dot{ \theta }_i \forall i $ of the oscillators start to deviate from the synchronized state. At time $ t_k + d $, we apply to the drivers the optimal control of equation (X) such that the system is brought to the synchronized state at time $ t_k + d + T $, where T is the control time. At this time, if the mismatch between production and consumption is still active, we maintain synchrony by using optimal control with $T=1$. Figure 1 shows the evolution of a subset (for clarity) of the nodes' frequencies during the control phase.
+We first consider a small example of 10 nodes connected with an erdos-renyi topology. The power distribution and the capacities of the lines are selected randomly such that the system is at equilibrium. Therefore, the production matches the consumption, no line is overloaded and all nodes are synchronized to the main frequency. We use the greedy algorithm \ref{algo_1} based on the trace of the inverse Gramian as to select the driver set $S$. At a given time $ t_k $, we introduce a small perturbation in the form of a mismatch between the production and consumption : $P_i(t_k) = P_i(t_{k-1}) + \delta P$ for some random node i. Consequently, the frequencies $ \dot{ \theta }_i \forall i $ of the oscillators start to deviate from the synchronized state. At time $ t_k + d $, we apply to the drivers the optimal control of equation \ref{eq:ustar} such that the system is brought to the synchronized state at time $ t_k + d + T $, where T is the control time. At this time, if the mismatch between production and consumption is still active, we maintain synchrony by using optimal control with $T=1$. Figure \ref{fig:frequecies} shows the evolution of the nodes' frequencies during the control phase.
 
 \begin{figure}
-\label{fig:frequecies}
-\includegraphics[scale=.38]{./figure_2/figure_2}
+\includegraphics[scale=.38]{./figure_2/figure_2.pdf}
 \caption{Time series of the N frequencies $\omega_i$ (phase angles are not shown for clarity). $d$ is the delay between the perturbation and the begining of the control phase that bring the system bak in the synchronized state in T time steps. Here, $d$ was chosen quite large for the clarity of the figure. Note that, if the perturbation is still active at this point, the system still needs control in order to stay synchronized (batteries should still compensate the power imbalance)}
+\label{fig:frequecies}
 \end{figure}
 
-The purpose of selecting the drivers according to a Gramian related metric is to minimize, on average, the amount of control energy needed. In other words, if we select the drivers randomly, we expect to need, on average, more energy to control the system. In figure 2, we draw $10^4$ example systems of 50 nodes with random scale-free topologies (Barabasi-Albert model is used), and random power distributions and line capacities.  For each system we select a random number of drivers $N_D \sim \mathcal{U}(1,N_{nodes}) $ and we find two driver sets of size $N_D $. One is chosen randomly and the other is found by greedy optimization of a gramian based metric. For both sets, we draw a random initial state $Y_i$ and a random final state $Y_f$, and we compute the control energy required for driving the system from $Y_i$ to $Y_f$. On figure \ref{fig:densities} we plot each system as a dot with coordinates $(n_D = N_D / N_{nodes}, log(\mathcal{E}))$. The color indicates what method has been used, and the lines show the average accross $n_D$. As visible, both curve decreases as the number of drivers increases, meaning that, as the number of drivers grows, the average control energy tends to decrease. Furthermore, we tend to use, as exected, less energy when the drivers are carefully selected. Note that this difference tends to zero when $n_D$ tend to one, because almost all nodes are then selected, yielding little flexibility for optimization.
+The purpose of selecting the drivers according to a Gramian related metric is to minimize, on average, the amount of control energy needed. In other words, if we select the drivers randomly, we expect to need, on average, more energy to control the system. In figure \ref{fig:densities}, we draw $10^4$ example systems of 50 nodes with random scale-free topologies (Barabasi-Albert model is used), and random power distributions and line capacities.  For each system we select a random number of drivers $N_D \sim \mathcal{U}(1,N_{nodes}) $ and we find two driver sets of size $N_D $. One is chosen randomly and the other is found with algorithm \ref{algo_1}. For both sets, we draw a random initial state $Y_i$ and a random final state $Y_f$, and we compute the control energy required for driving the system from $Y_i$ to $Y_f$. On figure \ref{fig:densities} we plot each system as a dot with coordinates $(n_D = N_D / N_{nodes}, log(\mathcal{E}))$. The color indicates what method has been used, and the lines show the average accross $n_D$. As visible, both curves decrease as the number of drivers increases, meaning that, as the number of drivers grows, the average control energy tends to decrease. Furthermore, we tend to use, as exected, less energy when the drivers are carefully selected. Note that this difference tends to zero when $n_D$ tends to one, because almost all nodes are then selected, yielding little flexibility for optimization.
 
 %For each system we find the driver set S using algorithm (X) and we draw a random driver set $S'$ such that $S$ and $S'$ have the same size, and such that $S'$ also provide full control of the system. We then compute the control signals and the corresponding control energies $\mathcal{E}_S$ and $\mathcal{E}_{S'}$ for both $S$ and $S'$. Each system can therefore be represented as a point with coordinates $(|S|, \mathcal{E}_S)$. On figure 2, we plot the densities of these points for the random case (left pannel) and the optimized case (right pannel). Regions in dark red contains a lot of points while regions in dark blue have very few points. Figure 2 shows that most of the systems considered tend to be controlled by the drivers of algorithm X with less energy and/or drivers than for the random case.
 
 \begin{figure}
-\label{fig:densities}
 \includegraphics[scale=.35]{./figure_3/figure_3}
 \caption{Control energy $log(\mathcal{E})$ against size of control set $n_D$ for random and optimized driver sets. Topologies are drawn from a Barabasi-Albert model with $ N_{nodes} = 50 $, power and line capacity distributions are random. For both case, $10^4$ instances are considered and the results are displayed as dots. The lines shows the average for both case. }
+\label{fig:densities}
 \end{figure}
 
-We investigate next how the topology of the grid affects the size of the control set. We consider first the case of an erdos renyi topology with probability of connection p. We show on Figure 3 how the size of the driver set evolves with p for different Gramian based metrics and for two levels of constraints : 
+We investigate next how the topology of the grid affects the size of the control set. We consider first the case of an erdos renyi topology with probability of connection p. We show on Figure \ref{fig:erdos_renyi} how the size of the driver set evolves with p for different Gramian based metrics and for two levels of constraints : 
 
 \begin{itemize}
 \item Level 1 : full control : the system can be moved from any point to any other point of the state space. We do not consider constraints on the energy which can tend to infinity. 
-\item Level 2 : full control + line capacities constraints + battery constraints (see algorithm X). This level is much more demanding since we impose the ability to move the system from any point to any other point, without overloading any line or breaking any battery limits in the process.
+\item Level 2 : full control + line capacities constraints + battery constraints (see algorithm \ref{algo_1}). This level is much more demanding since we impose the ability to move the system from any point to any other point, without overloading any line or breaking any battery limits in the process.
 \end{itemize}
 
 \begin{figure}
-\label{fig:erdos_renyi}
 \includegraphics[scale=.25]{./figure_4/figure_4}
 \caption{ $ n_D $ against link probability p for erdos-renyi topologies ($ N=100 $). Curves are averaged over 100 realizations. The top three curves show the results for the three metrics taken into consideration when all constraints are considered (see Level 2 in the main text). The bottom three curves exhibit the results for the same metrics when only the full controllability constraint is considered (see Level 1 in the main text).}
+\label{fig:erdos_renyi}
 \end{figure}
 
 
@@ -407,54 +413,60 @@ When p is close to zero, nodes tend to be very poorly connected such that we nee
 Because transmission power grids are spatially and politically constrained (each contry has its own transmission grid which is interconnected with neighboring grids at some specific locations), we study the control in clustered graphs. More precisely, we use a block model $(N, N_{clusters}, p_{in}, p_{out} ) $ to generate random topologies where $ N $ is the number of nodes, $N_{clusters} $ is the number of clusters, $p_{in} $ is the probability that two nodes within the same cluster are linked, and $ p_{out} $ is the probability that two nodes in two distinct clusters are connected.
 
 \begin{figure}
-\label{fig:block_model_1}
 \includegraphics[scale=.25]{./figure_5/figure_5}
 \caption{$n_D$ against $N_{clusters} $ for different values of $ p_{in} $ and $ p_{out} = 0.1 $. $ N=200 $ and curves are averaged over 100 realizations.}
+\label{fig:block_model_1}
 \end{figure}
 
-Figure 4 displays how the number of drivers evolves with the number of clusters for different values of $ p_{in} $ when $ p_{out} $ is fixed ($p_{out} =0.1$). For small values of $ p_{in} \sim p_{out} $ clusters are poorly marked, and the connectivity is low. The number of drivers in these conditions is large and increases slowly when the number of clusters augments. As $ p_{in} $ increases, the clusters becomes more densily connected such that within a cluster less drivers are required in order to control it. As the number of clusters grows, more drivers are required. For large values of $p_{in} $, the behavious is more complex. We see indeed that for $p_{in} = 0.9 $ and $N_{clusters} = 2$, almost $ 94\% $ of the nodes are needed for control, but this quantity first decreases with the addition of a few more clusters ($ 71\% $ for $ N_{clusters}=5 $), before increasing. This behavior can be explained by the fact that controlling a very dense network requires, in our settings, a very large portion of nodes to be drivers. Controlling one cluster alone thus requires to control almost all nodes within this cluster. Nevertheless, when a relatively small (compared to the number of nodes in the graph) number of clusters are interconnected with a few links, nodes in one cluster are able to control nodes in other clusters to which they are connected. As the number of clusters grows, the global connectivity increases rapidely, such that the number of drivers also rises. We show this behavior in more details in figure 5, where the number of drivers is plotted against $ p_{in} $ for $N=200$ and $N_{clusters} \in \{2,4,5\} $. For $N_{clusters} = 2 $ and $ p_{in} = 0.1 $ the number of drivers is large since the graph is poorly connected. When $p_{in} $ increases, $n_D$ decreases until a minimum value $n_D \sim 0.64 $ at $ p_{in} \sim 0.6 $. After this point, $n_D$ augments with $p_{in}$. For $N_{clusters} = 5 $, we do not see this behavior : $ n_D $ decreases continuously as $p_{in} $ increases as expected from the curves of figure 4.
+Figure \ref{fig:block_model_1} displays how the number of drivers evolves with the number of clusters for different values of $ p_{in} $ when $ p_{out} $ is fixed ($p_{out} =0.1$). For small values of $ p_{in} \sim p_{out} $ clusters are poorly marked, and the connectivity is low. The number of drivers in these conditions is large and increases slowly when the number of clusters augments. As $ p_{in} $ increases, the clusters becomes more densily connected such that within a cluster less drivers are required in order to control it. As the number of clusters grows, more drivers are required. For large values of $p_{in} $, the behavious is more complex. We see indeed that for $p_{in} = 0.9 $ and $N_{clusters} = 2$, almost $ 94\% $ of the nodes are needed for control, but this quantity first decreases with the addition of a few more clusters ($ 71\% $ for $ N_{clusters}=5 $), before increasing. This behavior can be explained by the fact that controlling a very dense network requires, in our settings, a very large portion of nodes to be drivers. Controlling one cluster alone thus requires to control almost all nodes within this cluster. Nevertheless, when a relatively small (compared to the number of nodes in the graph) number of clusters are interconnected with a few links, nodes in one cluster are able to control nodes in other clusters to which they are connected. As the number of clusters grows, the global connectivity increases rapidely, such that the number of drivers also rises. We show this behavior in more details in figure \ref{fig:block_model_2}, where the number of drivers is plotted against $ p_{in} $ for $N=200$ and $N_{clusters} \in \{2,4,5,10\} $. For $N_{clusters} = 2 $ and $ p_{in} = 0.1 $ the number of drivers is large since the graph is poorly connected. When $p_{in} $ increases, $n_D$ decreases until a minimum value $n_D \sim 0.6 $ at $ p_{in} \sim 0.25 $. After this point, $n_D$ augments with $p_{in}$. For $N_{clusters} = 10 $, we do not see this behavior : $ n_D $ decreases continuously as $p_{in} $ increases as expected from the curves of figure \ref{fig:block_model_1}.
 
 
 \begin{figure}
-\label{fig:block_model_2}
 \includegraphics[scale=.25]{./figure_6/figure_6}
 \caption{$n_D$ against $ p_{in} $ for systems of $N=200 $, $p_{out} = 0.1 $, and for different values of $N_{clusters} $. The curves are averaged over 100 realizations.}
+\label{fig:block_model_2}
 \end{figure}
 
 
 Until now, we have considered all batteries to be equal, i.e they have the same capacity and charge/discharge rate. Although simple, this assumption might not be verified in practice where different types of batteries exist. Optimizing the locations of different types of storage as to optimize the cost / reliability tradeoff is out of the scope of this paper. Nevertheless, we studied how the number of drivers behaves when the batteries have different capacities. More precisely, we draw the capacities of the batteries from a normal distribution $ \mathcal{N}( \mu_{\lambda}, \sigma_{\lambda} ) $ and keep a simple erdos-renyi topology for the power grid. Note that each node is assigned a capacity regardless of its caracteristics (degree, betweeness, and so on...). In figure 6, we plot $n_D$ as a function of the relative standard deviation of the battery capacity distribution $ \sigma_{\lambda} / \mu_{\lambda} $. We see that $n_D$ increases with the variance of the capacity distribution for all three gramian based metrics considered. Moreover, this rise is abrupt since $n_D$ goes from $ 60 \%$ for $\frac{\sigma_{\lambda}}{\mu_{\lambda}} \sim 0.15 $ to $100 \% $ for $\frac{\sigma_{\lambda}}{\mu_{\lambda}} \sim 0.27 $. 
 
 \begin{figure}
-\label{fig:batteries_variance}
 \includegraphics[scale=.37]{./figure_7/figure_7}
 \caption{$n_D$ against the relative standard deviation of the capacity distribution of the batteries $ \frac{ \sigma_{ \lambda } }{ \mu_{ \lambda} } $. The dots are averages over 100 realizations and the curves are obtained using a Savitzky-Golay filter, each color shows the results for a given metric. The graphs are erdos-renyi with $N=100$ and $p=0.3$, and $\mu_{\lambda} = 100 $ units. }
+\label{fig:batteries_variance}
 \end{figure} 
 
-Real power grids topologies are known to be far from random such that using the erdos-renyi model probably do not give a realistic insight into the control of these systems. Depending on the voltage level 
-
-In this section, we provide some results in order to illustrate the work described above. We use a small 10 prosumers example, connected with a random topology. The line maximum capacities are selected  according to a normal distribution $\mathcal{N}(\mu_l,\sigma_l)$.  The power distribution is chosen as a zero mean normal distribution $ \mathcal{N}(0,\sigma_p) $, and the samples should satisfy the constraints \ref{synchro_constraint} and \ref{zero_sum_constraint}. Obviously, $\mu_l$, $\sigma_l$, and $\sigma_p$ should be chosen such that, without any perturbation, the lines are not already overloaded.
-
-
-
-Once the synchronized state is reached, we apply a perturbation to the power distribution such that there is a mismatch between production and demand (constraint \ref{zero_sum_constraint} is not satisfied). We denote by $d$ the delay between the perturbation and the start of the control phase (see figure \ref{fig:frequecies}). $d$ depends on how fast the perturbation can be identified and located, the control inputs calculated and communicated without error through the communication network.
-
-
- If the driver set is fixed, we expect that the higher $ d$, the higher the control energy required to drive the system back to the synchronized state. Eventually, if $d$ is too large, the minimum energy control inputs will result in some constraints being broken (battery levels, line flows, and so on...).
-
 \begin{figure}
-\label{fig:energy_vs_delay}
-\includegraphics[scale=.38]{energy_vs_delay2}
-\caption{ Control energy used in order to bring the system back to the synchronized state when the delay between perturbation and control increases, while the driver node set is fixed. The blue dotted curve shows the results for $ S_k^{\star} $ our algorithm \ref{algo_1}. The red line shows (average and standard deviation) the results when the driver set is sampled uniformly from all possible sets of the size $ k $.}
+\includegraphics[scale=.25]{power_grid}
+\caption{European transmission power grid \cite{jensen_2015_35177}. Nodes are colored according to their county.}
+\label{fig:network}
 \end{figure}
 
-As visible on figure \ref{fig:energy_vs_delay}, when d increases, the system deviates more from the equilibrium and this results in more energy being used to steer it back to synchrony. We also investigate here how the driver node set selected with algorithm \ref{algo_1} performs against other driver sets of the same size. we use a Monte-Carlo sampling of the drivers sets of the same size as our solution, and filter out the ones that do not meet all the constraints. Figure \ref{fig:energy_vs_delay} shows that our solution (blue dotted curve) uses less energy than other driver sets of the same size (red curve).
+Since real power grids topologies are known to be far from random, we consider here, as a real case, the european transmission power grid which topology was obtained from \cite{jensen_2015_35177}. The network contains 1494 nodes and 2156 edges and spans 25 european countries. A representation of this graph can be found in figure \ref{fig:network} where the nodes are colored according to their country. We select the power distribution and the line capacities randomly, and use the method described above.
+
+We use the trace of the Gramian matrix for the optimization. The top panel of figure \ref{fig:real_case} shows that the rank of the Gramian increases with the size of the controllers until reaching full rank ($rank[W_S] = 2 N_{nodes}$) for $N_D=1244$. Above this point, we compute the average control energy needed to drive the system from an initial random state to a random final state. The curves on the bottom panel of figure \ref{fig:real_case} show the results for the optimized driver sets and for random driver sets. As can be seen on figure \ref{fig:real_case}, as the size of the driver set increases, the control energy tend to decrease. But, we need less energy with the optimized driver set than with randomly sampled sets.   
+
+\begin{figure}
+\includegraphics[scale=.4]{figs2}
+\caption{Gramian rank and control energy evolution for european transmission power grid (see figure \ref{fig:network}).}
+\label{fig:real_case}
+\end{figure}
+%In this section, we provide some results in order to illustrate the work described above. We use a small 10 prosumers example, connected with a random topology. The line maximum capacities are selected  according to a normal distribution $\mathcal{N}(\mu_l,\sigma_l)$.  The power distribution is chosen as a zero mean normal distribution $ \mathcal{N}(0,\sigma_p) $, and the samples should satisfy the constraints \ref{synchro_constraint} and \ref{zero_sum_constraint}. Obviously, $\mu_l$, $\sigma_l$, and $\sigma_p$ should be chosen such that, without any perturbation, the lines are not already overloaded.
+
+%Once the synchronized state is reached, we apply a perturbation to the power distribution such that there is a mismatch between production and demand (constraint \ref{zero_sum_constraint} is not satisfied). We denote by $d$ the delay between the perturbation and the start of the control phase (see figure \ref{fig:frequecies}). $d$ depends on how fast the perturbation can be identified and located, the control inputs calculated and communicated without error through the communication network.
+
+%If the driver set is fixed, we expect that the higher $ d$, the higher the control energy required to drive the system back to the synchronized state. Eventually, if $d$ is too large, the minimum energy control inputs will result in some constraints being broken (battery levels, line flows, and so on...).
+
+%As visible on figure \ref{fig:energy_vs_delay}, when d increases, the system deviates more from the equilibrium and this results in more energy being used to steer it back to synchrony. We also investigate here how the driver node set selected with algorithm \ref{algo_1} performs against other driver sets of the same size. we use a Monte-Carlo sampling of the drivers sets of the same size as our solution, and filter out the ones that do not meet all the constraints. Figure \ref{fig:energy_vs_delay} shows that our solution (blue dotted curve) uses less energy than other driver sets of the same size (red curve).
 
 
 \section{Conclusion}
 \label{sec:Conclusion}
-C'est fini !
+In this paper, we considered the case of networks of prosumers which can behave as generators or loads depending on weather conditions. We modeled the grid as a coupled oscillators network and approximated the dynamics with a system of second order linear differencial equations. We seek to control this dynamic when small perturbations occur by placing storage devices at a subset of the nodes. We believe that the energy that should be injected or absorbed from the grid by these controllers should be minimized. Given the diversity of possible situations, we seek the subset of nodes that, on average, necessitates minimum control energy. Based on the gramian matrix of the system and submodular set functions, we show how to find driver sets that use low energy on average and respect the system constraints. 
 
+We believe that interesting work could be done by combining this model with real production and consumption data. There are indeed complex spatial and temporal correlations that impacts these distributions. Weather perturbations would therefore affect the nodes not completely at random, and affect how control should be designed. 
 
+On the other hand, we seek in this paper, drivers that achieve full control of the system although this might not be needed in practice. More subtle controllability schemes might give better results both in terms of number of drivers and control energy.
 
 \bibliographystyle{IEEEtran}  
 \bibliography{Article}
