@@ -242,7 +242,7 @@ Where the control matrix B is an indicator of the driver nodes, and $ u(t) $ rep
 
 Controllability in complex network became popular with the well-known structural controllability framework introduced by Lin \cite{1100557}. This approach relates the search of the minimum driver set to a maximum matching in a bipartite graph, which can be done with the Hopcroft-Karp algorithm in $ O(|E|\sqrt{|V|}) $ in the worst case. This requires that the system $(A,B)$ is a structured system, meaning that all elements in A and B are either fixed zeros or independant free parameters. In such a situation, structural control is extremely powerfull since it enables us to discuss a network's controllability relatively quickly even if we do not know the exact weights of the edges. Note however that the independance of the parameters is a key assumption. If A is the adjacency matrix of an undirected network for instance, independance is not true since A is symetric, and one must use different tools to study controllability \cite{Yuan2014}. 
 
-On the other hand, if the system is controllable, there might be more than one sequence of control inputs $u(t)$ that could drive it from $Y_0$ to $Y_f$. Among all these possibilities, optimal control is devoted to find the sequence that minimize some cost function J that can depend on the sates of the system $Y(t)$, the control inputs $u(t)$, and the final state $Y(T)$. As explained above, we are interested in the sequence that requires the minimum amount of control energy \cite{Yan2012}. Let $ \mathcal{E} = \int_{t_0}^{t_0+T} \Vert u(t) \Vert^2 dt $ be the energy used for the control of the system. It can be shown \cite{Liu2015} that the control input sequence that minimizes the control energy can be written as :
+On the other hand, if the system is controllable, there might be more than one sequence of control inputs $u(t)$ that could drive it from $Y_0$ to $Y_f$. Among all these possibilities, optimal control is devoted to find the sequence that minimize some cost function that can depend on the sates of the system $Y(t)$, the control inputs $u(t)$, and the final state $Y(T)$. As explained above, we are interested in the sequence that requires the minimum amount of control energy \cite{Yan2012}. Let $ \mathcal{E} = \int_{t_0}^{t_0+T} \Vert u(t) \Vert^2 dt $ be the energy used for the control of the system. It can be shown \cite{Liu2015} that the control input sequence that minimizes the control energy can be written as :
 
 
 \begin{equation}
@@ -251,85 +251,72 @@ On the other hand, if the system is controllable, there might be more than one s
 \end{equation}
 
 
-where $ \nu(T) = Y_f - A^T Y_0 $ is the difference between the desired final state and the final free state, and $W(T) = \sum_{k=0}^{T} A^k B B^T (A^T)^k $ is called the Gramian matrix of the system. The Gramian is a popular tool in control theory since it is deeply linked to the controllability of the system. It can indeed be shown that the system is controllable if and only if the Gramian is not singular, and that its rank indicates the dimension of the controllable subspace. Besides, the minimum control energy associated with the inputs $ u^{\star}(t)$ can be written as :
+where $ \nu(T) = Y_f - A^T Y_0 $ is the difference between the desired final state and the final free state, and $W(T) = \sum_{k=0}^{T} A^k B B^T (A^T)^k $ is called the Gramian matrix of the system. It can be shown that the system is controllable if and only if the Gramian is not singular, and that its rank indicates the dimension of the controllable subspace. Besides, the minimum control energy associated with the inputs $ u^{\star}(t)$ can be written as :
 
 
 \begin{equation}
+\label{eq:energy}
  \mathcal{E}_{min} = \nu(T)^T W^{-1}(T) \nu(T)
 \end{equation}
 
+In cases where W is not invertible, the pseudo-inverse $W^{\dagger}$ can be used to obtain similar information in the controllable subpsace. The last row of matrix A in equation \ref{eq:final_with_control} adds a dimension to the state space that does not correspond to any phase angle or frequency but makes W singular. Since we seek control in the first $2N$ dimensions, we will use $W^{\dagger}$ in practice, and consider full control of the system if $rank[W]=2N$. 
 
-Not surprisingly, the control energy depends on the initial and final states as well as on the inverse of the Gramian. In our prosumer case, we want to find the best battery placement, whose quality should not depend on the initial and final states. Indeed, these states as well as  the power  distribution $ \Psi $ are susceptible to change, and we would like to perform well, on average, whatever the states and distributions. Therefore, we concentrate on  the Gramian as a way to quantify the average controllability. 
+Not surprisingly, $\mathcal{E}_{min}$ depends on the initial and final states as well as on the inverse of W which only depends on A and B. The gramian can thus be used to obtain information about average controllability in the state space. In the prosumer network that we consider, generators and loads ($\Psi$) are suceptible to change, meaning that initial ($Y_0$) and final ($Y_f$) states might also vary. In such a scenario, we prefer to aim at good performances on average, rather than very good performances in few specific cases and bad performances in all other situations.
 
-Since the control energy is related to $ W^{-1} $, small energies are obtained from "large" W. In \cite{Summers2014}, the authors introduce several Gramian-based metrics that have concrete meanings in terms of the system controllability. For example, the trace of the inverse Gramian ($ Tr[ W^{-1}(T)] $) quantifies the average control energy necessary to move the system around the state space. These metrics measures some notions of the control allowed by a given driver node set. But they can be understood the other way around : what drivers should one select as to optimize a given control-based metric ? 
+Since the control energy is related to $ W^{-1} $, systems with "large" W will tend to be controlled with low energy. Still, this notion of "large" W is not very accurate and we need to quantify it by taking some metric based on W. We already mentioned the rank of W as being the dimension of the controllable subspace, but it is also known that the trace of W and $W^{-1}$ give information about average controllability and average control energy \cite{Summers2014}. In such a situation, we can build a set function that, given a set of driver nodes S, returns the value of one of these metrics. Indeed, given A and S, we can obtain the system dynamics $(A,B_S)$ and compute the gramian $W_S$. In other word, such a function would quantify the ability of a given set of nodes to contol the system on average.
 
-Using the Gramian-based metric $ \mathcal{M} $, let $ F(S) =\mathcal{M}(W_S(T))$, where $ W_S(T) $  is the Gramian matrix based on the driver node set S. \cite{Summers2014} showed that for some metrics, F is a submodular set function. This means that, for these metrics, we can use the greedy heuristic discussed above in order to maximize F.
+A key point, demonstrated in \cite{Summers2014}, is that the set function $ F:S \longrightarrow Tr[W_S] $ is modular and the two functions $F:S \longrightarrow Tr[W^{-1}_S] $ ans $ F:S \longrightarrow rank[W_S] $ are submodular. This nice result enables us to look for the driver node set that optimizes some notion of the average controllability using a simple greedy heuristic with a worst case guarantee (see section X).
 
-
+Theoretically, we are now able, for a given prosumer network, to compute A, B, and W. For some trajectory in the state space, we can use equation \ref{eq:ustar} to find the optimum control inputs. However, since we are considering a power grid as a network, we would like to verify that these inputs will ensure that the system physical constraints are respected in the process. We propose in the next section to take into account constraints related to line capacities and storage imperfections.
 
 \section{Control of the Prosumer Network}
 \label{sec:Control_prosumer}
 
-\subsection{Controllability Constraints}
-
- Considering the dynamic of equation \ref{eq:final_with_control}, we notice that the Gramian based on the transition matrix A is never invertible, meaning that the system should not be controllable. It is easy to see that, indeed, we do not have full control because of the last row of the matrix. Nevertheless, as this row was only added in order to include the power distribution inside A, we do not need to control the system along this "fake" dimension. That is, we only seek the control of the system in the first $ 2N $ dimensions of the space (N phase angles $ \theta_i$ and N frequencies $\omega_i$). Therefore, whenever $ rank[ W(T) ] = 2N$, we will use the Moore-Penrose pseudo inverse of the gramian $ W^\dagger(T) $.
+% Considering the dynamic of equation \ref{eq:final_with_control}, we notice that the Gramian based on the transition matrix A is never invertible, meaning that the system should not be controllable. It is easy to see that, indeed, we do not have full control because of the last row of the matrix. Nevertheless, as this row was only added in order to include the power distribution inside A, we do not need to control the system along this "fake" dimension. That is, we only seek the control of the system in the first $ 2N $ dimensions of the space (N phase angles $ \theta_i$ and N frequencies $\omega_i$). Therefore, whenever $ rank[ W(T) ] = 2N$, we will use the Moore-Penrose pseudo inverse of the gramian $ W^\dagger(T) $.
 
 
 \subsection{Flow Constraints}
 
-Recall that the simplified dynamic (see section II) implies that, the power transmitted on line $ (i,j)$ is $ P_{i \longrightarrow j} = -P_{ij}^{MAX} \left( \theta_j(t) - \theta_i(t) \right) $. Therefore, we write the flow constraints at time t as :
+The power transmitted on line $ (i,j)$ is $ P_{i \longrightarrow j} = -P_{ij}^{MAX} \left( \theta_j(t) - \theta_i(t) \right) $. Flow constraints at time t can thus be written as :
 
 \begin{equation}
+\label{eq:flow_cons}
 \forall (i,j) \in V^2,\ \ g_{ij} \left|\ \theta_j(t) - \theta_i(t)\ \right| \leq 1
 \end{equation}
-If this constraint is verified for all instant t in the control time range, then the control inputs satisfy the flow constraints. 
+If these constraints are verified for all instants t during the control phase then no line gets overloaded by the action of the control inputs. 
 
 
-\subsection{Power Distribution Constraints}
-As explained above, we wish to obtain results that do not depend on the power distribution $ \Psi $ of the prosumers. However, in order to achieve synchronization along with feasible power flows, we need to define some constraints on this distribution. As shown in [], a condition for achieving synchronisation in a coupled oscillators network is $ \Vert L^{\dagger}\omega \Vert_{\infty} \leq sin(\gamma) $, where L is the Laplacian matrix of the network, $ \omega $ is the vector of the natural frequencies of the oscillators, and $ \Vert x \Vert_{\infty} = max \left| x_i - x_j \right| $. If this condition is satisfied, the oscillators will synchronize at the common frequency $ \omega_{SYNC} $ with the phase lock $ g_{ij}\left| \theta_i - \theta_j \right| \leq    \gamma \in[0,\frac{\pi}{2}],\ \forall (i,j) \in V^2 $.
+%\subsection{Power Distribution Constraints}
+%As explained above, we wish to obtain results that do not depend on the power distribution $ \Psi $ of the prosumers. However, in order to achieve synchronization along with feasible power flows, we need to define some constraints on this distribution. 
 
-Therefore, we can write the following synchronization constraint :
+\cite{Dorfler2013} showed that a condition for synchronisation in a coupled oscillators network is $ \Vert L^{\dagger}\omega \Vert_{\infty} \leq sin(\gamma) $, where L is the Laplacian matrix of the network, $ \omega $ is the vector of the natural frequencies of the oscillators, and $ \Vert x \Vert_{\infty} = max \left| x_i - x_j \right| $. If this condition is satisfied, the oscillators synchronize at the common frequency $ \omega_{SYNC} $ with the phase lock $ g_{ij}\left| \theta_i - \theta_j \right| \leq    \gamma \in[0,\frac{\pi}{2}],\ \forall (i,j) \in V^2 $. The synchronisation condition becomes in our settings :
 
 \begin{equation}
 \label{synchro_constraint}
 \Vert \left( L \circ P^{MAX} \right)^{\dagger} \Psi \Vert_{\infty} \leq sin(1)
 \end{equation}
 
-Where $ A \circ B $ represents the Hadamard product between matrices A and B. If constraint \ref{synchro_constraint} is satisfied, the oscillators will synchronize to a common frequency $ \omega_{SYNC} = \frac{\sum_{k=1}^{N}\Psi_k}{\sum_{k=1}^{N}\alpha_k} = \frac{\sum_{k=1}^{N}P_{S,k}}{I\Omega N \alpha}$, and the flows at steady state will be feasible. Note that $\omega_{SYNC} $ should be zero in order to synchronize to the main frequency $\Omega$ (recall that the phase angles and frequencies represent deviations from $ \Omega$). This gives the following intuitive zero sum constraint :
+Where $ A \circ B $ represents the Hadamard product between matrices A and B. If constraint \ref{synchro_constraint} is satisfied, the oscillators synchronize to a common frequency $ \omega_{SYNC} = \frac{\sum_{k=1}^{N}\Psi_k}{\sum_{k=1}^{N}\alpha_k} = \frac{\sum_{k=1}^{N}P_{S,k}}{I\Omega N \alpha}$. 
+
+Since the dynamics is expressed in term of deviations from $ \Omega$, synchronization at $ \Omega $ is achieved if $\omega_{SYNC} = 0 $. Wich gives the production consumption balance constraint :
 
 \begin{equation}
 \label{zero_sum_constraint}
 \sum_{k=1}^{N} P_{S,k} = 0
 \end{equation}
 
-Constraint \ref{zero_sum_constraint} simply states that production should match demand in order for the system to remain stable.
+Constraints \ref{synchro_constraint} and \ref{zero_sum_constraint} ensure that the system is able to synchronize at $\Omega$ without overloading lines.
 
 
 \subsection{Battery Constraints}
 
-Let i be a battery. In the simple model we adopt here, it is characterised by its maximum charge/discharge rate $r_i$, the amount of energy stored at time t $ \Lambda_i(t) $, and its maximum capacity $ \Lambda_{i, MAX} $. For simplicity, we will consider all maximum charge/discharge rates to be the same ($r$), and all maximum capacities to be the same $\Lambda_{Max}$. Furthermore, we denote by $ \Lambda(t) $ the vector of energy level at time t.
-
-Since the control input vector $ u^{\star}(t) $ specifies the control inputs, the energy level dynamic of the batteries can be written as :
-
-\begin{equation}
-\Lambda(t+\Delta t) = \Lambda(t) - u^{\star}(t) I \Omega 
-\end{equation}
-
-Which can also be written as :
+As for power lines, we need to take into account the imperfections of the storage that we consider. In practice, we could use some detailed and complex models, but as to keep things simple, we adopt here a straightforward approach. A storage i has a maximum charge/discharge rate $r_i$, some amount of energy stored at time t $ \Lambda_i(t) $, and a maximum capacity $ \Lambda_{i, MAX} $. We assume that all maximum rates ($r$) and all maximum capacities $\Lambda_{Max}$ are the same accross the storage equipments. We also denote by $ \Lambda(t) $ the vector of energy level at time t. Since $ u^{\star}(t) $ specifies the control inputs, the energy level dynamic of the batteries is $ \Lambda(t+\Delta t) = \Lambda(t) - u^{\star}(t) I \Omega $. Which can also be written as :
 
 \begin{equation}
 \Lambda(t)  = \Lambda(0) - I \Omega \sum_{k=0}^{t}u^{\star}(k)
 \end{equation}
 
-Where $ \Lambda(0) $ is the vector of initial levels in the batteries.
-
-Obviously, the energy level in a battery is bounded. This leads to the following set of constraints : 
-
-\begin{equation}
- \forall t, \ \ 0 \leq \Lambda(t) \leq \Lambda_{MAX}
-\end{equation}
- 
-Which can be written in terms of the control inputs :
+Where $ \Lambda(0) $ is the vector of initial levels in the batteries. Obviously, $\Lambda(t)$ has to stay within possible bounds : $ \forall t, \ \ 0 \leq \Lambda(t) \leq \Lambda_{MAX} $. Which can be written in terms of the control inputs :
 
 \begin{equation}
 \label{level_constraints}
@@ -342,8 +329,6 @@ Finally, during each time slot, the battery cannot charge or discharge at a rate
 \label{rate_constraints}
  \forall t,\ \ \left|\ u^{\star}(t)I \Omega\ \right| \leq r 
  \end{equation}
-
-If, for a given $ u^{\star} $, the constraints of eq. \ref{level_constraints} and \ref{rate_constraints} are satisfied, then the control inputs satisfy the storage constraints.
 
 \subsection{Algorithm}
 

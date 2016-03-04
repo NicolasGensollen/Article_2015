@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  1 MAR 2016 11:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  4 MAR 2016 18:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -799,14 +799,14 @@ LaTeX Warning: Command \textsection invalid in math mode on input line 225.
 
 Missing character: There is no Ÿ in font cmr10!
 [3 <./figure_1/figure_1.pdf>]
-Underfull \hbox (badness 4168) in paragraph at lines 266--267
-[]\T1/ptm/m/n/10 Using the Gramian-based met-ric $\OMS/cmsy/m/n/10 M$\T1/ptm/m/
-n/10 , let $\OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S\OT1/cmr/m/n/1
-0 ) =
+Underfull \hbox (badness 3460) in paragraph at lines 280--281
+[]\T1/ptm/m/n/10 The power trans-mit-ted on line $\OT1/cmr/m/n/10 (\OML/cmm/m/i
+t/10 i; j\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 is $\OML/cmm/m/it/10 P[] \OT1/cmr/m/
+n/10 =
  []
 
 [4]
-Overfull \hbox (3.18854pt too wide) in paragraph at lines 354--362
+Overfull \hbox (3.18854pt too wide) in paragraph at lines 339--347
 []\T1/ptm/b/n/10 while  $\OML/cmm/m/it/9 Not  []$
  []
 
@@ -814,10 +814,10 @@ Overfull \hbox (3.18854pt too wide) in paragraph at lines 354--362
 File: ./figure_2/figure_2.pdf Graphic file (type pdf)
 
 <use ./figure_2/figure_2.pdf>
-Package pdftex.def Info: ./figure_2/figure_2.pdf used on input line 380.
+Package pdftex.def Info: ./figure_2/figure_2.pdf used on input line 365.
 (pdftex.def)             Requested size: 274.62885pt x 164.77731pt.
 
-Overfull \hbox (22.62885pt too wide) in paragraph at lines 380--381
+Overfull \hbox (22.62885pt too wide) in paragraph at lines 365--366
 [][] 
  []
 
@@ -825,10 +825,10 @@ Overfull \hbox (22.62885pt too wide) in paragraph at lines 380--381
 File: ./figure_3/figure_3.pdf Graphic file (type pdf)
 
 <use ./figure_3/figure_3.pdf>
-Package pdftex.def Info: ./figure_3/figure_3.pdf used on input line 390.
+Package pdftex.def Info: ./figure_3/figure_3.pdf used on input line 375.
 (pdftex.def)             Requested size: 252.94878pt x 252.94878pt.
 
-Overfull \hbox (0.94878pt too wide) in paragraph at lines 390--391
+Overfull \hbox (0.94878pt too wide) in paragraph at lines 375--376
 [][] 
  []
 
@@ -836,10 +836,10 @@ Overfull \hbox (0.94878pt too wide) in paragraph at lines 390--391
 File: ./figure_4/figure_4.pdf Graphic file (type pdf)
 
 <use ./figure_4/figure_4.pdf>
-Package pdftex.def Info: ./figure_4/figure_4.pdf used on input line 403.
+Package pdftex.def Info: ./figure_4/figure_4.pdf used on input line 388.
 (pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 403--404
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 388--389
 [][] 
  []
 
@@ -855,10 +855,10 @@ tiple pdfs with page group included in a single page
 File: ./figure_5/figure_5.pdf Graphic file (type pdf)
 
 <use ./figure_5/figure_5.pdf>
-Package pdftex.def Info: ./figure_5/figure_5.pdf used on input line 416.
+Package pdftex.def Info: ./figure_5/figure_5.pdf used on input line 401.
 (pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 416--417
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 401--402
 [][] 
  []
 
@@ -866,10 +866,10 @@ Overfull \hbox (19.01184pt too wide) in paragraph at lines 416--417
 File: ./figure_6/figure_6.pdf Graphic file (type pdf)
 
 <use ./figure_6/figure_6.pdf>
-Package pdftex.def Info: ./figure_6/figure_6.pdf used on input line 425.
+Package pdftex.def Info: ./figure_6/figure_6.pdf used on input line 410.
 (pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 425--426
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 410--411
 [][] 
  []
 
@@ -877,20 +877,20 @@ Overfull \hbox (19.01184pt too wide) in paragraph at lines 425--426
 File: ./figure_7/figure_7.pdf Graphic file (type pdf)
 
 <use ./figure_7/figure_7.pdf>
-Package pdftex.def Info: ./figure_7/figure_7.pdf used on input line 434.
+Package pdftex.def Info: ./figure_7/figure_7.pdf used on input line 419.
 (pdftex.def)             Requested size: 267.3948pt x 160.43689pt.
 
-Overfull \hbox (15.3948pt too wide) in paragraph at lines 434--435
+Overfull \hbox (15.3948pt too wide) in paragraph at lines 419--420
 [][] 
  []
 
 <power_grid.pdf, id=185, 1084.05pt x 1084.05pt>
 File: power_grid.pdf Graphic file (type pdf)
  <use power_grid.pdf>
-Package pdftex.def Info: power_grid.pdf used on input line 440.
+Package pdftex.def Info: power_grid.pdf used on input line 425.
 (pdftex.def)             Requested size: 271.01184pt x 271.01184pt.
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 440--441
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 425--426
 [][] 
  []
 
@@ -901,14 +901,14 @@ tiple pdfs with page group included in a single page
 >] <figs2.pdf, id=279, 722.7pt x 578.16pt>
 File: figs2.pdf Graphic file (type pdf)
  <use figs2.pdf>
-Package pdftex.def Info: figs2.pdf used on input line 450.
+Package pdftex.def Info: figs2.pdf used on input line 435.
 (pdftex.def)             Requested size: 289.07487pt x 231.2599pt.
 
-Overfull \hbox (37.07487pt too wide) in paragraph at lines 450--451
+Overfull \hbox (37.07487pt too wide) in paragraph at lines 435--436
 [][] 
  []
 
-[8 <./figure_7/figure_7.pdf> <./power_grid.pdf
+(./Article.bbl [8 <./figure_7/figure_7.pdf> <./power_grid.pdf
 
 pdfTeX warning: pdflatex.exe (file ./power_grid.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
@@ -916,7 +916,7 @@ dfs with page group included in a single page
 
 pdfTeX warning: pdflatex.exe (file ./figs2.pdf): PDF inclusion: multiple pdfs w
 ith page group included in a single page
->] (./Article.bbl
+>]
 ** WARNING: IEEEtran.bst: No hyphenation pattern has been
 ** loaded for the language `English'. Using the pattern for
 ** the default language instead.
@@ -943,10 +943,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6816 strings out of 493054
- 101277 string characters out of 6138326
- 184685 words of memory out of 5000000
- 10203 multiletter control sequences out of 15000+600000
+ 6819 strings out of 493054
+ 101315 string characters out of 6138326
+ 184707 words of memory out of 5000000
+ 10206 multiletter control sequences out of 15000+600000
  110783 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,10n,38p,2162b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -969,7 +969,7 @@ texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/20
 ist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pf
 b><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Article.pdf (9 pages, 3380358 bytes).
+Output written on Article.pdf (9 pages, 3380367 bytes).
 PDF statistics:
  475 PDF objects out of 1000 (max. 8388607)
  179 compressed objects within 2 object streams
