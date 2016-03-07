@@ -140,20 +140,19 @@ We now use simplifications based on the fact that we consider small deviations f
 Moreover, we assume that the rate at which energy is stored in the kinetic term is much less of the rate at which energy is dissipated by friction : $ \ddot{ \theta }_i  << \frac{2 K_D}{I} $ (see \cite{Filatrella2008} for more details). Equation \ref{eq:without_simplification} becomes :
 
 \begin{equation}
- \ddot{ \theta_i } \sim \psi_i - \alpha \dot{ \theta_i } + \sum_{j\neq i} K_{ij} g_{ji} sin \left[ \theta_j - \theta_i \right] 
+ \ddot{ \theta_i } \sim \psi_i - \alpha \dot{ \theta_i } - \sum_{j\neq i} K_{ij} sin \left[ \theta_j - \theta_i \right] 
 \end{equation}
 
-Where $ \alpha = \frac{2 K_D}{I} $ is the dissipation term, $ K_{ij} = \frac{P_{ij}^{MAX}}{I \Omega} $ are the coupling strengths, $ \psi_i = \left[ \frac{P_{S,i}}{I \Omega} - \frac{K_D \Omega}{I} \right] $, and $ g_{ij} $ is the coefficient of the adjacency matrix G.
-By working in a rotating frame, we can simplify $ \psi_i=\frac{P_{S,i}}{I \Omega} $.
+Where $ \alpha = \frac{2 K_D}{I} $ is the dissipation term, $ K_{ij} = \frac{P_{ij}^{MAX}}{I \Omega} $ are the coupling strengths, $ \psi_i = \left[ \frac{P_{S,i}}{I \Omega} - \frac{K_D \Omega}{I} \right] $. By working in a rotating frame, we can simplify $ \psi_i=\frac{P_{S,i}}{I \Omega} $.
 
 The dynamic is still non linear because of the sine coupling. Therefore, we also assume that the phase angle differences are small such that $ sin \left[ \theta_j - \theta_i \right] \sim \theta_j - \theta_i $. By using vector notations, the dynamic can be written in the following form :
 
 \begin{equation}
 \label{eq:with_simplification}
-\ddot{\theta} = \Psi - \alpha \dot{\theta} - KL\theta
+\ddot{\theta} = \Psi - \alpha \dot{\theta} - (K \circ L)\theta
 \end{equation}
 
-Where L is the Laplacian matrix of the underlying topology ($ k_i $ is the degree of node i):
+Where $ A \circ B $ represents the Hadamard product between matrices A and B, and L is the Laplacian matrix of the underlying topology ($ k_i $ is the degree of node i):
 
 \begin{equation}
 L_{ij} = \left\{ \begin{array}{lll} k_i\ \ \ \ \,if\ i=j \\ -g_{ij}\  if\ i \neq j \end{array} \right. 
@@ -163,7 +162,7 @@ L_{ij} = \left\{ \begin{array}{lll} k_i\ \ \ \ \,if\ i=j \\ -g_{ij}\  if\ i \neq
 Equation \ref{eq:with_simplification} is a continuous time second order linear system of $ N $ equations. We first transform this into a continuous time first order linear system of $ 2 N $ equations by introducing the following vector : $ X = \left( \begin{array}{c} \theta \\ \dot{\theta} \end{array} \right)$ : 
 
 \begin{equation}
- \dot{X} = \left( \begin{array}{cc} 0 & I \\ - KL & -\alpha I \end{array} \right) X + \left( \begin{array}{c} 0 \\ \Psi \end{array} \right)
+ \dot{X} = \left( \begin{array}{cc} 0 & I \\ - (K \circ L) & -\alpha I \end{array} \right) X + \left( \begin{array}{c} 0 \\ \Psi \end{array} \right)
 \end{equation}
  
 Which can be written in discrete time: 
@@ -172,7 +171,7 @@ Which can be written in discrete time:
 X(t+\Delta t) = M  X(t) +  \left( \begin{array}{c} 0 \\ \Psi \Delta t \end{array} \right)
 \end{equation} 
 
-With $ M = \left( \begin{array}{cc} I & I \Delta t \\ -KL \Delta t & (1-\alpha \Delta t) I \end{array} \right) $.
+With $ M = \left( \begin{array}{cc} I & I \Delta t \\ -(K \circ L) \Delta t & (1-\alpha \Delta t) I \end{array} \right) $.
 
 By setting $ Y(t) =  \left( \begin{array}{c} X(t) \\ 1 \end{array} \right) $, let the dynamic be :
 
@@ -184,7 +183,7 @@ By setting $ Y(t) =  \left( \begin{array}{c} X(t) \\ 1 \end{array} \right) $, le
 With transition matrix A :
 
 \begin{equation}
- A =   \left( \begin{array}{ccc} I & I \Delta t & 0 \\ -KL \Delta t & (1-\alpha \Delta t)I & \Psi \Delta t \\ 0&0&1 \end{array} \right)
+ A =   \left( \begin{array}{ccc} I & I \Delta t & 0 \\ -(K \circ L) \Delta t & (1-\alpha \Delta t)I & \Psi \Delta t \\ 0&0&1 \end{array} \right)
 \end{equation}
 
 Equation \ref{eq:final_equation} is a linear discrete time system of $ 2 N + 1 $ equations. Note that the transition matrix A encodes all the system parameters, topology, and power distribution.
@@ -238,11 +237,11 @@ We assume the control of a subset of the nodes that we call driver nodes. In our
 \end{equation}
 
 
-Where the control matrix B is an indicator of the driver nodes, and $ u(t) $ represents the control vector input at time t. The system is said to be controllable in T steps if it can be steered from any initial state $ Y_0 $ to any final state $ Y_f $ through a sequence of control inputs $ u(t) $. 
+Where the control matrix B is an indicator of the driver nodes, and $ u(t) $ represents the control vector input at time t. In other words, B maps the locations of the storage equipments in the system, and $u(t)$ can be seen as the power that needs to be injected or absorbed from the grid. The system is said to be controllable in T steps if it can be steered from any initial state $ Y_0 $ to any final state $ Y_f $ through a sequence of control inputs $ u(t) $. 
 
-Controllability in complex network became popular with the well-known structural controllability framework introduced by Lin \cite{1100557}. This approach relates the search of the minimum driver set to a maximum matching in a bipartite graph, which can be done with the Hopcroft-Karp algorithm in $ O(|E|\sqrt{|V|}) $ in the worst case. This requires that the system $(A,B)$ is a structured system, meaning that all elements in A and B are either fixed zeros or independant free parameters. In such a situation, structural control is extremely powerfull since it enables us to discuss a network's controllability relatively quickly even if we do not know the exact weights of the edges. Note however that the independance of the parameters is a key assumption. If A is the adjacency matrix of an undirected network for instance, independance is not true since A is symetric, and one must use different tools to study controllability \cite{Yuan2014}. 
+Controllability in complex network became popular with the structural controllability framework introduced by Lin \cite{1100557}. This approach relates the search of the minimum driver set to a maximum matching in a bipartite graph, which can be done with the Hopcroft-Karp algorithm in $ O(|E|\sqrt{|V|}) $ in the worst case. This requires that the system $(A,B)$ is a structured system, meaning that all elements in A and B are either fixed zeros or independant free parameters. In such a situation, structural control is extremely powerfull since it enables us to discuss a network's controllability relatively quickly even if we do not know the exact weights of the edges. Note however that the independance of the parameters is a key assumption. If A is the adjacency matrix of an undirected network for instance, independance is not verified (since A is symetric). In this case, one should use different tools to study controllability \cite{Yuan2014}. 
 
-On the other hand, if the system is controllable, there might be more than one sequence of control inputs $u(t)$ that could drive it from $Y_0$ to $Y_f$. Among all these possibilities, optimal control is devoted to find the sequence that minimize some cost function that can depend on the sates of the system $Y(t)$, the control inputs $u(t)$, and the final state $Y(T)$. As explained above, we are interested in the sequence that requires the minimum amount of control energy \cite{Yan2012}. Let $ \mathcal{E} = \int_{t_0}^{t_0+T} \Vert u(t) \Vert^2 dt $ be the energy used for the control of the system. It can be shown \cite{Liu2015} that the control input sequence that minimizes the control energy can be written as :
+On the other hand, if the system is controllable, there might be more than one sequence of control inputs $u(t)$ that could drive it from $Y_0$ to $Y_f$. Among all these possibilities, optimal control is devoted to find the sequence that minimizes some cost function that can depend on the sates of the system $Y(t)$, the control inputs $u(t)$, and the final state $Y(T)$. As explained above, we are interested in the sequence that requires the minimum amount of control energy \cite{Yan2012}. Let $ \mathcal{E} = \int_{t_0}^{t_0+T} \Vert u(t) \Vert^2 dt $ be the energy used for the control of the system. It can be shown \cite{Liu2015} that the control input sequence that minimizes $ \mathcal{E} $ can be written as :
 
 
 \begin{equation}
@@ -251,7 +250,7 @@ On the other hand, if the system is controllable, there might be more than one s
 \end{equation}
 
 
-where $ \nu(T) = Y_f - A^T Y_0 $ is the difference between the desired final state and the final free state, and $W(T) = \sum_{k=0}^{T} A^k B B^T (A^T)^k $ is called the Gramian matrix of the system. It can be shown that the system is controllable if and only if the Gramian is not singular, and that its rank indicates the dimension of the controllable subspace. Besides, the minimum control energy associated with the inputs $ u^{\star}(t)$ can be written as :
+where $ \nu(T) = Y_f - A^T Y_0 $ is the difference between the desired final state and the final free state, and $W(T) = \sum_{k=0}^{T} A^k B B^T (A^T)^k $ is called the Gramian matrix of the system. It can also be shown that the system is controllable if and only if the Gramian is not singular, and that its rank indicates the dimension of the controllable subspace. Besides, the minimum control energy associated with the inputs $ u^{\star}(t)$ can be written as :
 
 
 \begin{equation}
@@ -277,11 +276,11 @@ Theoretically, we are now able, for a given prosumer network, to compute A, B, a
 
 \subsection{Flow Constraints}
 
-The power transmitted on line $ (i,j)$ is $ P_{i \longrightarrow j} = -P_{ij}^{MAX} \left( \theta_j(t) - \theta_i(t) \right) $. Flow constraints at time t can thus be written as :
+The power that flows on line $ (i,j) \in E$ can be written as $ P_{i \longrightarrow j} = -P_{ij}^{MAX} \left( \theta_j(t) - \theta_i(t) \right) $. Flow constraints at time t are straightforward :
 
 \begin{equation}
 \label{eq:flow_cons}
-\forall (i,j) \in V^2,\ \ g_{ij} \left|\ \theta_j(t) - \theta_i(t)\ \right| \leq 1
+\forall (i,j) \in E,\ \left|\ \theta_j(t) - \theta_i(t)\ \right| \leq 1
 \end{equation}
 If these constraints are verified for all instants t during the control phase then no line gets overloaded by the action of the control inputs. 
 
@@ -289,14 +288,14 @@ If these constraints are verified for all instants t during the control phase th
 %\subsection{Power Distribution Constraints}
 %As explained above, we wish to obtain results that do not depend on the power distribution $ \Psi $ of the prosumers. However, in order to achieve synchronization along with feasible power flows, we need to define some constraints on this distribution. 
 
-\cite{Dorfler2013} showed that a condition for synchronisation in a coupled oscillators network is $ \Vert L^{\dagger}\omega \Vert_{\infty} \leq sin(\gamma) $, where L is the Laplacian matrix of the network, $ \omega $ is the vector of the natural frequencies of the oscillators, and $ \Vert x \Vert_{\infty} = max \left| x_i - x_j \right| $. If this condition is satisfied, the oscillators synchronize at the common frequency $ \omega_{SYNC} $ with the phase lock $ g_{ij}\left| \theta_i - \theta_j \right| \leq    \gamma \in[0,\frac{\pi}{2}],\ \forall (i,j) \in V^2 $. The synchronisation condition becomes in our settings :
+\cite{Dorfler2013} showed that a condition for synchronisation in a coupled oscillators network is $ \Vert L^{\dagger}\omega \Vert_{\infty,E} \leq sin(\gamma) $, where L is the Laplacian matrix of the network, $ \omega $ is the vector of the natural frequencies of the oscillators, and $ \Vert x \Vert_{\infty,E} = max_{(i,j) \in E} \left| x_i - x_j \right| $. If this condition is satisfied, the oscillators synchronize at the common frequency $ \omega_{SYNC} $ with the phase lock $ \left| \theta_i - \theta_j \right| \leq    \gamma \in[0,\frac{\pi}{2}],\ \forall (i,j) \in E $. The synchronisation condition becomes in our settings :
 
 \begin{equation}
 \label{synchro_constraint}
-\Vert \left( L \circ P^{MAX} \right)^{\dagger} \Psi \Vert_{\infty} \leq sin(1)
+\Vert \left( L \circ K \right)^{\dagger} \Psi \Vert_{\infty} \leq sin(1)
 \end{equation}
 
-Where $ A \circ B $ represents the Hadamard product between matrices A and B. If constraint \ref{synchro_constraint} is satisfied, the oscillators synchronize to a common frequency $ \omega_{SYNC} = \frac{\sum_{k=1}^{N}\Psi_k}{\sum_{k=1}^{N}\alpha_k} = \frac{\sum_{k=1}^{N}P_{S,k}}{I\Omega N \alpha}$. 
+If constraint \ref{synchro_constraint} is satisfied, the oscillators synchronize to a common frequency $ \omega_{SYNC} = \frac{\sum_{k=1}^{N}\Psi_k}{\sum_{k=1}^{N}\alpha_k} = \frac{\sum_{k=1}^{N}P_{S,k}}{I\Omega N \alpha}$. 
 
 Since the dynamics is expressed in term of deviations from $ \Omega$, synchronization at $ \Omega $ is achieved if $\omega_{SYNC} = 0 $. Wich gives the production consumption balance constraint :
 
@@ -330,28 +329,55 @@ Finally, during each time slot, the battery cannot charge or discharge at a rate
  \forall t,\ \ \left|\ u^{\star}(t)I \Omega\ \right| \leq r 
  \end{equation}
 
-\subsection{Algorithm}
+\subsection{Optimization with grid constraints}
 
-We propose the following greedy algorithm in order to find the smallest set of locations that minimizes the average control energy and satisfy the constraints. We assume here that the system is in a given initial state $ Y_0 $ and we want to reach a desired final state $ Y_f$  in $ T $ time steps. The algorithm \ref{algo_1} starts with an empty set and, as long as that constraints are not satisfied, it increases the size of the set. For a given size k, the set $ S_k $ is found using lazy greedy submodular optimization of a Gramian-based set function F. In practice we use $ F(S) = -Tr \left[ W_S^{\dagger}(T) \right] $ which quantifies the average energy required to move the system around the controllable subspace. The algorithm \ref{algo_1} returns then the tuple $ (k,S_k,u^{\star}) $ such that $ S_k $ is the smallest set that minimizes the average control energy and, in this case, satisfies the constraints with control $u^{\star}$. 
+\begin{figure}
+\includegraphics[scale=.38]{./figure_2/figure_2.pdf}
+\caption{At time $ t_k=4500 $, $P_i(t_k) = P_i(t_{k-1}) + \delta P$ for some random node i (perturbation). Consequently, the frequencies $ \dot{ \theta }_i $ deviate from the synchronized state. At time $ t_k + d = 5000$, optimal control inputs (see equation \ref{eq:ustar}) are injected such that the system is brought to the synchronized state at time $ t_k + d + T = 5500 $ (T is the control time).} 
+
+%At this time, if the mismatch between production and consumption is still active, we maintain synchrony by using optimal control with $T=1$. }
+
+%Time series of the N frequencies $\omega_i$ (phase angles are not shown for clarity). $d$ is the delay between the perturbation and the begining of the control phase that bring the system bak in the synchronized state in T time steps. Here, $d$ was chosen quite large for the clarity of the figure. Note that, if the perturbation is still active at this point, the system still needs control in order to stay synchronized (batteries should still compensate the power imbalance)}
+\label{fig:frequecies}
+\end{figure}
+
+Finding the driver set of size k $S_k$ using the gramian $W_{S_k}$ of the system $(A,B_{S_k})$ does not require initial and final states. Besides, $W_{S_k}$ does not depend on the modified power distribution $ \Psi $ of the nodes. We are indeed looking for k controllers that perform well on average over all possible situations. On the contrary, the constraints derived above (eq. \ref{eq:flow_cons}, \ref{synchro_constraint}, \ref{level_constraints} and \ref{rate_constraints}) are bound to a particular trajectory in the state space. We indeed check wether the power grid can sustain the controlled dynamics when transitioning from a given initial state to a target final state. As we do not know what these states could be, we could use multiple scenarios and test wether $S_k$ can control the system without violation of constraints. In this paper, we use a slightly different approach. We consider that the system is initially at equilibrium (all elements are synchronized at $\Omega$) and that control will be necessary if a perturbation (power inbalance) occurs and takes the system out of equilibrium (see figure \ref{fig:frequecies}). Depending on how much time we need to start the control phase, the state of the system (the initial state for control) might be "somewhere around" the synchronized state. In order to test wether a set $S_k$ can control the system without violation of constraints, we sample initial states within some hypersphere centered on the synchronized state and check all the constraints. If for all trajectories, the constraints are respected, then we consider that $S_k$ enables the control of the system.
+
+Increasing k means that we deploy more strorage which increases the costs but tends to lower the energy required as we will see in the next section. Using the submodularity of the set functions introduced above, we can build a sequence of growing sets $S_1 \subset S_2 \subset ... \subset S_k $ and stop as soon as $S_k$ enables the control of the system for some k.
+
+%We propose the following greedy algorithm in order to find the smallest set of locations that minimizes the average control energy and satisfy the constraints. We assume here that the system is in a given initial state $ Y_0 $ and we want to reach a desired final state $ Y_f$  in $ T $ time steps. The algorithm \ref{algo_1} starts with an empty set and, as long as that constraints are not satisfied, it increases the size of the set. For a given size k, the set $ S_k $ is found using lazy greedy submodular optimization of a Gramian-based set function F. In practice we use $ F(S) = -Tr \left[ W_S^{\dagger}(T) \right] $ which quantifies the average energy required to move the system around the controllable subspace. The algorithm \ref{algo_1} returns then the tuple $ (k,S_k,u^{\star}) $ such that $ S_k $ is the smallest set that minimizes the average control energy and, in this case, satisfies the constraints with control $u^{\star}$. 
 
 \begin{algorithm}
-        \begin{algorithmic}
-                \While{  \small $ Not\ \left\{ \begin{array}{lll} 
-                                              rank \left[ W_{S_k}(T) \right] < 2N\ and \\ 
-                                              \forall t,\forall (i,j) \in V^2, g_{ij} \left| \theta_j(t) - \theta_i(t) \right| \leq 1\  and \\
-                                              \forall t,-\frac{\Lambda(0)}{I \Omega} \leq -\sum_{k=0}^{t}u^{\star}(k) \leq \frac{ \Lambda_{MAX} - \Lambda(0)}{I \Omega}and \\ 
-                                              \forall t,\ \left| u^{\star}(t) \right| \leq \frac{r}{I\Omega}
-                                              
-                                              \end{array} 
-                                              \right. $ }
-    \State $k\ \ \ \ \ \ \ \ \ \ \ \gets k+1$
-    \State $ S_k \ \ \ \ \ \ \ \ \ \gets Subopt(F, k)$
-    \State $ u^{\star}(t)\ \ \ \ \ \ \gets OptControl( S_{k} )$ 
-\EndWhile
-        \end{algorithmic}
-        \caption{Greedy submodular optimization with constraints}
+	\begin{algorithmic}
+				\State $k=0$
+				\State $S_k = \emptyset $
+                \While{ Not Constrained control}
+                	\State $k \gets k+1$
+                	\State $ S_k = S_{k-1} \cup argmax_{i \in N \setminus S_{k-1} } F(S_{k-1} \cup \{i\}) $
+                \EndWhile
+     \end{algorithmic}
+     \caption{Optimization with grid constraints}
         \label{algo_1}
 \end{algorithm}
+
+%\begin{algorithm}
+%        \begin{algorithmic}
+%                \While{  \small $ Not\ \left\{ \begin{array}{lll} 
+%                                              rank \left[ W_{S_k}(T) \right] < 2N\ and \\ 
+%                                              \forall t,\forall (i,j) \in V^2, g_{ij} \left| \theta_j(t) - \theta_i(t) \right| \leq 1\  and \\
+%                                              \forall t,-\frac{\Lambda(0)}{I \Omega} \leq -\sum_{k=0}^{t}u^{\star}(k) \leq \frac{ \Lambda_{MAX} - \Lambda(0)}{I \Omega}and \\ 
+%                                              \forall t,\ \left| u^{\star}(t) \right| \leq \frac{r}{I\Omega}
+%                                              
+%                                              \end{array} 
+%                                              \right. $ }
+%    \State $k\ \ \ \ \ \ \ \ \ \ \ \gets k+1$
+%    \State $ S_k \ \ \ \ \ \ \ \ \ \gets Subopt(F, k)$
+%    \State $ u^{\star}(t)\ \ \ \ \ \ \gets OptControl( S_{k} )$ 
+%\EndWhile
+%        \end{algorithmic}
+%        \caption{Greedy submodular optimization with constraints}
+%        \label{algo_1}
+%\end{algorithm}
 \normalsize
 
 
@@ -359,34 +385,30 @@ We propose the following greedy algorithm in order to find the smallest set of l
 \section{Results}
 \label{sec:Results}
 
-We first consider a small example of 10 nodes connected with an erdos-renyi topology. The power distribution and the capacities of the lines are selected randomly such that the system is at equilibrium. Therefore, the production matches the consumption, no line is overloaded and all nodes are synchronized to the main frequency. We use the greedy algorithm \ref{algo_1} based on the trace of the inverse Gramian as to select the driver set $S$. At a given time $ t_k $, we introduce a small perturbation in the form of a mismatch between the production and consumption : $P_i(t_k) = P_i(t_{k-1}) + \delta P$ for some random node i. Consequently, the frequencies $ \dot{ \theta }_i \forall i $ of the oscillators start to deviate from the synchronized state. At time $ t_k + d $, we apply to the drivers the optimal control of equation \ref{eq:ustar} such that the system is brought to the synchronized state at time $ t_k + d + T $, where T is the control time. At this time, if the mismatch between production and consumption is still active, we maintain synchrony by using optimal control with $T=1$. Figure \ref{fig:frequecies} shows the evolution of the nodes' frequencies during the control phase.
+%We first consider a small example of 10 nodes connected with an erdos-renyi topology. The power distribution and the capacities of the lines are selected randomly such that the system is at equilibrium. Therefore, the production matches the consumption, no line is overloaded and all nodes are synchronized to the main frequency. We use the greedy algorithm \ref{algo_1} based on the trace of the inverse Gramian as to select the driver set $S$. At a given time $ t_k $, we introduce a small perturbation in the form of a mismatch between the production and consumption : $P_i(t_k) = P_i(t_{k-1}) + \delta P$ for some random node i. Consequently, the frequencies $ \dot{ \theta }_i \forall i $ of the oscillators start to deviate from the synchronized state. At time $ t_k + d $, we apply to the drivers the optimal control of equation \ref{eq:ustar} such that the system is brought to the synchronized state at time $ t_k + d + T $, where T is the control time. At this time, if the mismatch between production and consumption is still active, we maintain synchrony by using optimal control with $T=1$. Figure \ref{fig:frequecies} shows the evolution of the nodes' frequencies during the control phase.
 
-\begin{figure}
-\includegraphics[scale=.38]{./figure_2/figure_2.pdf}
-\caption{Time series of the N frequencies $\omega_i$ (phase angles are not shown for clarity). $d$ is the delay between the perturbation and the begining of the control phase that bring the system bak in the synchronized state in T time steps. Here, $d$ was chosen quite large for the clarity of the figure. Note that, if the perturbation is still active at this point, the system still needs control in order to stay synchronized (batteries should still compensate the power imbalance)}
-\label{fig:frequecies}
-\end{figure}
 
-The purpose of selecting the drivers according to a Gramian related metric is to minimize, on average, the amount of control energy needed. In other words, if we select the drivers randomly, we expect to need, on average, more energy to control the system. In figure \ref{fig:densities}, we draw $10^4$ example systems of 50 nodes with random scale-free topologies (Barabasi-Albert model is used), and random power distributions and line capacities.  For each system we select a random number of drivers $N_D \sim \mathcal{U}(1,N_{nodes}) $ and we find two driver sets of size $N_D $. One is chosen randomly and the other is found with algorithm \ref{algo_1}. For both sets, we draw a random initial state $Y_i$ and a random final state $Y_f$, and we compute the control energy required for driving the system from $Y_i$ to $Y_f$. On figure \ref{fig:densities} we plot each system as a dot with coordinates $(n_D = N_D / N_{nodes}, log(\mathcal{E}))$. The color indicates what method has been used, and the lines show the average accross $n_D$. As visible, both curves decrease as the number of drivers increases, meaning that, as the number of drivers grows, the average control energy tends to decrease. Furthermore, we tend to use, as exected, less energy when the drivers are carefully selected. Note that this difference tends to zero when $n_D$ tends to one, because almost all nodes are then selected, yielding little flexibility for optimization.
+
+The purpose of selecting the drivers according to a Gramian related metric is to minimize, on average, the amount of control energy needed. In other words, if we select the drivers randomly, we expect to need, on average, more energy to control the system. In figure \ref{fig:densities}, we draw $10^4$ example systems of 50 nodes with random scale-free topologies (Barabasi-Albert model), and random power distributions and line capacities.  For each system we select a random number of drivers $N_D \sim \mathcal{U}(1,N_{nodes}) $ and we find two driver sets of size $N_D $. One is chosen randomly and the other is found with algorithm \ref{algo_1}. For both sets, if the control is possible, we draw a random initial state $Y_i$ and a random final state $Y_f$, and we compute the control energy required for driving the system from $Y_i$ to $Y_f$. On figure \ref{fig:densities} we plot each system as a dot with coordinates $(n_D = N_D / N_{nodes}, log(\mathcal{E}))$. The color indicates what method has been used, and the lines show the average accross $n_D$. As visible, both curves decrease as the number of drivers increases, meaning that, as the number of drivers grows, the average control energy tends to decrease. Furthermore, we tend to use, as expected, less energy when the drivers are carefully selected. Note that this difference tends to zero when $n_D$ tends to one, because almost all nodes are then selected, yielding little flexibility for optimization.
 
 %For each system we find the driver set S using algorithm (X) and we draw a random driver set $S'$ such that $S$ and $S'$ have the same size, and such that $S'$ also provide full control of the system. We then compute the control signals and the corresponding control energies $\mathcal{E}_S$ and $\mathcal{E}_{S'}$ for both $S$ and $S'$. Each system can therefore be represented as a point with coordinates $(|S|, \mathcal{E}_S)$. On figure 2, we plot the densities of these points for the random case (left pannel) and the optimized case (right pannel). Regions in dark red contains a lot of points while regions in dark blue have very few points. Figure 2 shows that most of the systems considered tend to be controlled by the drivers of algorithm X with less energy and/or drivers than for the random case.
 
 \begin{figure}
 \includegraphics[scale=.35]{./figure_3/figure_3}
-\caption{Control energy $log(\mathcal{E})$ against size of control set $n_D$ for random and optimized driver sets. Topologies are drawn from a Barabasi-Albert model with $ N_{nodes} = 50 $, power and line capacity distributions are random. For both case, $10^4$ instances are considered and the results are displayed as dots. The lines shows the average for both case. }
+\caption{Logarithm of average control energy $log(\mathcal{E})$ against size of control set $n_D$ for random and optimized driver sets. Topologies are drawn from a Barabasi-Albert model with $ N_{nodes} = 50 $, power and line capacity distributions are random. $10^4$ instances are considered and the results are displayed as dots. The lines shows the average for both case. }
 \label{fig:densities}
 \end{figure}
 
 We investigate next how the topology of the grid affects the size of the control set. We consider first the case of an erdos renyi topology with probability of connection p. We show on Figure \ref{fig:erdos_renyi} how the size of the driver set evolves with p for different Gramian based metrics and for two levels of constraints : 
 
 \begin{itemize}
-\item Level 1 : full control : the system can be moved from any point to any other point of the state space. We do not consider constraints on the energy which can tend to infinity. 
-\item Level 2 : full control + line capacities constraints + battery constraints (see algorithm \ref{algo_1}). This level is much more demanding since we impose the ability to move the system from any point to any other point, without overloading any line or breaking any battery limits in the process.
+\item Level 1 : full control : the system can be moved from any point to any other point of the state space. We do not consider any other constraint. 
+\item Level 2 : full control + grid constraints (see section \ref{sec:control_and_submodularity}). This level is much more demanding since we impose the ability to move the system from any point to any other point, without overloading any line or breaking any battery limits in the process.
 \end{itemize}
 
 \begin{figure}
 \includegraphics[scale=.25]{./figure_4/figure_4}
-\caption{ $ n_D $ against link probability p for erdos-renyi topologies ($ N=100 $). Curves are averaged over 100 realizations. The top three curves show the results for the three metrics taken into consideration when all constraints are considered (see Level 2 in the main text). The bottom three curves exhibit the results for the same metrics when only the full controllability constraint is considered (see Level 1 in the main text).}
+\caption{ $ n_D $ against link probability p for erdos-renyi topologies ($ N=100 $). Curves are averaged over 100 realizations. The top three curves show the results for the three metrics taken into consideration when all constraints are considered (see Level 2 in the main text). The bottom three curves exhibit the results for the same metrics when only the full controllability constraint is considered (see Level 1).}
 \label{fig:erdos_renyi}
 \end{figure}
 
@@ -395,7 +417,7 @@ When p is close to zero, nodes tend to be very poorly connected such that we nee
 
 
 
-Because transmission power grids are spatially and politically constrained (each contry has its own transmission grid which is interconnected with neighboring grids at some specific locations), we study the control in clustered graphs. More precisely, we use a block model $(N, N_{clusters}, p_{in}, p_{out} ) $ to generate random topologies where $ N $ is the number of nodes, $N_{clusters} $ is the number of clusters, $p_{in} $ is the probability that two nodes within the same cluster are linked, and $ p_{out} $ is the probability that two nodes in two distinct clusters are connected.
+Because transmission power grids are spatially constrained (each contry has its own transmission grid which is interconnected with neighboring grids at some specific locations), we study the control in clustered graphs. More precisely, we use a block model $(N, N_{clusters}, p_{in}, p_{out} ) $ to generate random topologies where $ N $ is the number of nodes, $N_{clusters} $ is the number of clusters, $p_{in} $ is the probability that two nodes within the same cluster are linked, and $ p_{out} $ is the probability that two nodes in two distinct clusters are connected.
 
 \begin{figure}
 \includegraphics[scale=.25]{./figure_5/figure_5}

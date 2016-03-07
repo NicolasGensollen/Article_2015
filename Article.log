@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  4 MAR 2016 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.10.28)  7 MAR 2016 17:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -783,114 +783,104 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: ./figure_1/figure_1.pdf Graphic file (type pdf)
 
 <use ./figure_1/figure_1.pdf>
-Package pdftex.def Info: ./figure_1/figure_1.pdf used on input line 216.
+Package pdftex.def Info: ./figure_1/figure_1.pdf used on input line 215.
 (pdftex.def)             Requested size: 179.23097pt x 253.5251pt.
 
 
-Package caption Warning: \label without proper \caption on input line 214.
+Package caption Warning: \label without proper \caption on input line 213.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:submodular' on page 3 undefined on input line 221
+LaTeX Warning: Reference `fig:submodular' on page 3 undefined on input line 220
 .
 
 
-LaTeX Warning: Command \textsection invalid in math mode on input line 225.
+LaTeX Warning: Command \textsection invalid in math mode on input line 224.
 
 Missing character: There is no Ÿ in font cmr10!
-[3 <./figure_1/figure_1.pdf>]
-Underfull \hbox (badness 3460) in paragraph at lines 280--281
-[]\T1/ptm/m/n/10 The power trans-mit-ted on line $\OT1/cmr/m/n/10 (\OML/cmm/m/i
-t/10 i; j\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 is $\OML/cmm/m/it/10 P[] \OT1/cmr/m/
-n/10 =
- []
-
-[4]
-Overfull \hbox (3.18854pt too wide) in paragraph at lines 339--347
-[]\T1/ptm/b/n/10 while  $\OML/cmm/m/it/9 Not  []$
- []
-
+[3 <./figure_1/figure_1.pdf>] [4]
 <./figure_2/figure_2.pdf, id=35, 722.7pt x 433.62pt>
 File: ./figure_2/figure_2.pdf Graphic file (type pdf)
 
 <use ./figure_2/figure_2.pdf>
-Package pdftex.def Info: ./figure_2/figure_2.pdf used on input line 365.
+Package pdftex.def Info: ./figure_2/figure_2.pdf used on input line 335.
 (pdftex.def)             Requested size: 274.62885pt x 164.77731pt.
 
-Overfull \hbox (22.62885pt too wide) in paragraph at lines 365--366
+Overfull \hbox (22.62885pt too wide) in paragraph at lines 335--336
 [][] 
  []
 
-[5] <./figure_3/figure_3.pdf, id=47, 722.7pt x 722.7pt>
+[5 <./figure_2/figure_2.pdf>]
+<./figure_3/figure_3.pdf, id=81, 722.7pt x 722.7pt>
 File: ./figure_3/figure_3.pdf Graphic file (type pdf)
 
 <use ./figure_3/figure_3.pdf>
-Package pdftex.def Info: ./figure_3/figure_3.pdf used on input line 375.
+Package pdftex.def Info: ./figure_3/figure_3.pdf used on input line 397.
 (pdftex.def)             Requested size: 252.94878pt x 252.94878pt.
 
-Overfull \hbox (0.94878pt too wide) in paragraph at lines 375--376
+Overfull \hbox (0.94878pt too wide) in paragraph at lines 397--398
 [][] 
  []
 
-<./figure_4/figure_4.pdf, id=48, 1084.05pt x 578.16pt>
+<./figure_4/figure_4.pdf, id=82, 1084.05pt x 578.16pt>
 File: ./figure_4/figure_4.pdf Graphic file (type pdf)
 
 <use ./figure_4/figure_4.pdf>
-Package pdftex.def Info: ./figure_4/figure_4.pdf used on input line 388.
-(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
-
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 388--389
-[][] 
- []
-
-[6 <./figure_2/figure_2.pdf> <./figure_3/figure_3.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figure_3/figure_3.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
-> <./figure_4/figure_4.pdf
-
-pdfTeX warning: pdflatex.exe (file ./figure_4/figure_4.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
->] <./figure_5/figure_5.pdf, id=182, 1084.05pt x 578.16pt>
-File: ./figure_5/figure_5.pdf Graphic file (type pdf)
-
-<use ./figure_5/figure_5.pdf>
-Package pdftex.def Info: ./figure_5/figure_5.pdf used on input line 401.
-(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
-
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 401--402
-[][] 
- []
-
-<./figure_6/figure_6.pdf, id=183, 1084.05pt x 578.16pt>
-File: ./figure_6/figure_6.pdf Graphic file (type pdf)
-
-<use ./figure_6/figure_6.pdf>
-Package pdftex.def Info: ./figure_6/figure_6.pdf used on input line 410.
+Package pdftex.def Info: ./figure_4/figure_4.pdf used on input line 410.
 (pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
 Overfull \hbox (19.01184pt too wide) in paragraph at lines 410--411
 [][] 
  []
 
-<./figure_7/figure_7.pdf, id=184, 722.7pt x 433.62pt>
-File: ./figure_7/figure_7.pdf Graphic file (type pdf)
+<./figure_5/figure_5.pdf, id=83, 1084.05pt x 578.16pt>
+File: ./figure_5/figure_5.pdf Graphic file (type pdf)
 
-<use ./figure_7/figure_7.pdf>
-Package pdftex.def Info: ./figure_7/figure_7.pdf used on input line 419.
-(pdftex.def)             Requested size: 267.3948pt x 160.43689pt.
+<use ./figure_5/figure_5.pdf>
+Package pdftex.def Info: ./figure_5/figure_5.pdf used on input line 423.
+(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
 
-Overfull \hbox (15.3948pt too wide) in paragraph at lines 419--420
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 423--424
 [][] 
  []
 
-<power_grid.pdf, id=185, 1084.05pt x 1084.05pt>
+[6 <./figure_3/figure_3.pdf> <./figure_4/figure_4.pdf
+
+pdfTeX warning: pdflatex.exe (file ./figure_4/figure_4.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>] <./figure_6/figure_6.pdf, id=178, 1084.05pt x 578.16pt>
+File: ./figure_6/figure_6.pdf Graphic file (type pdf)
+
+<use ./figure_6/figure_6.pdf>
+Package pdftex.def Info: ./figure_6/figure_6.pdf used on input line 432.
+(pdftex.def)             Requested size: 271.01184pt x 144.53964pt.
+
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 432--433
+[][] 
+ []
+
+
+Underfull \vbox (badness 1062) has occurred while \output is active []
+
+
+<./figure_7/figure_7.pdf, id=179, 722.7pt x 433.62pt>
+File: ./figure_7/figure_7.pdf Graphic file (type pdf)
+
+<use ./figure_7/figure_7.pdf>
+Package pdftex.def Info: ./figure_7/figure_7.pdf used on input line 441.
+(pdftex.def)             Requested size: 267.3948pt x 160.43689pt.
+
+Overfull \hbox (15.3948pt too wide) in paragraph at lines 441--442
+[][] 
+ []
+
+<power_grid.pdf, id=180, 1084.05pt x 1084.05pt>
 File: power_grid.pdf Graphic file (type pdf)
  <use power_grid.pdf>
-Package pdftex.def Info: power_grid.pdf used on input line 425.
+Package pdftex.def Info: power_grid.pdf used on input line 447.
 (pdftex.def)             Requested size: 271.01184pt x 271.01184pt.
 
-Overfull \hbox (19.01184pt too wide) in paragraph at lines 425--426
+Overfull \hbox (19.01184pt too wide) in paragraph at lines 447--448
 [][] 
  []
 
@@ -898,32 +888,32 @@ Overfull \hbox (19.01184pt too wide) in paragraph at lines 425--426
 
 pdfTeX warning: pdflatex.exe (file ./figure_6/figure_6.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
->] <figs2.pdf, id=279, 722.7pt x 578.16pt>
+> <./figure_7/figure_7.pdf
+
+pdfTeX warning: pdflatex.exe (file ./figure_7/figure_7.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>] <figs2.pdf, id=316, 722.7pt x 578.16pt>
 File: figs2.pdf Graphic file (type pdf)
  <use figs2.pdf>
-Package pdftex.def Info: figs2.pdf used on input line 435.
+Package pdftex.def Info: figs2.pdf used on input line 457.
 (pdftex.def)             Requested size: 289.07487pt x 231.2599pt.
 
-Overfull \hbox (37.07487pt too wide) in paragraph at lines 435--436
+Overfull \hbox (37.07487pt too wide) in paragraph at lines 457--458
 [][] 
  []
 
-(./Article.bbl [8 <./figure_7/figure_7.pdf> <./power_grid.pdf
-
-pdfTeX warning: pdflatex.exe (file ./power_grid.pdf): PDF inclusion: multiple p
-dfs with page group included in a single page
-> <./figs2.pdf
+(./Article.bbl
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `English'. Using the pattern for
+** the default language instead.
+** WARNING: IEEEtran.bst: No hyphenation pattern has been
+** loaded for the language `English'. Using the pattern for
+** the default language instead.
+[8 <./power_grid.pdf> <./figs2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./figs2.pdf): PDF inclusion: multiple pdfs w
 ith page group included in a single page
->]
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `English'. Using the pattern for
-** the default language instead.
-** WARNING: IEEEtran.bst: No hyphenation pattern has been
-** loaded for the language `English'. Using the pattern for
-** the default language instead.
-)
+>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -941,38 +931,36 @@ Before submitting the final camera ready copy, remember to:
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 6819 strings out of 493054
- 101315 string characters out of 6138326
- 184707 words of memory out of 5000000
- 10206 multiletter control sequences out of 15000+600000
- 110783 words of font info for 124 fonts, out of 8000000 for 9000
+ 6801 strings out of 493054
+ 101143 string characters out of 6138326
+ 183707 words of memory out of 5000000
+ 10195 multiletter control sequences out of 15000+600000
+ 107681 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,38p,2162b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,9n,38p,2162b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2015/texmf-dist/fo
 nts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2015/texmf-dist/fonts/t
-ype1/public/amsfonts/cmextra/cmex9.pfb><c:/texlive/2015/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi5.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi6.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
-<c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2015/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2015/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr9.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2015/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/ur
-w/times/utmbi8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pf
-b><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Article.pdf (9 pages, 3380367 bytes).
+ype1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2015/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi5.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><c:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2015/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2015/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/ti
+mes/utmb8a.pfb><c:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c
+:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2015/tex
+mf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Article.pdf (9 pages, 3327247 bytes).
 PDF statistics:
- 475 PDF objects out of 1000 (max. 8388607)
- 179 compressed objects within 2 object streams
+ 452 PDF objects out of 1000 (max. 8388607)
+ 162 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
