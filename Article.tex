@@ -212,7 +212,7 @@ F(X \cup \{ x \} ) - F(X) \geq F(Y \cup \{ x \} ) - F(Y)
 \begin{figure}
 	\label{fig:submodular}
 	\begin{center}
-	\includegraphics[scale=.3]{./figure_1/figure_1}
+	\includegraphics[scale=.25]{./figure_1/figure_1}
 	\caption{Submodularity example with sensor placements.}
 	\end{center}
 \end{figure}
@@ -332,7 +332,7 @@ Finally, during each time slot, the battery cannot charge or discharge at a rate
 \subsection{Optimization with grid constraints}
 
 \begin{figure}
-\includegraphics[scale=.38]{./figure_2/figure_2.pdf}
+\includegraphics[scale=.55]{plot5.pdf}%./figure_2/figure_2.pdf}
 \caption{At time $ t_k=4500 $, $P_i(t_k) = P_i(t_{k-1}) + \delta P$ for some random node i (perturbation). Consequently, the frequencies $ \dot{ \theta }_i $ deviate from the synchronized state. At time $ t_k + d = 5000$, optimal control inputs (see equation \ref{eq:ustar}) are injected such that the system is brought to the synchronized state at time $ t_k + d + T = 5500 $ (T is the control time).} 
 
 %At this time, if the mismatch between production and consumption is still active, we maintain synchrony by using optimal control with $T=1$. }
@@ -393,8 +393,9 @@ The purpose of selecting the drivers according to a Gramian related metric is to
 
 %For each system we find the driver set S using algorithm (X) and we draw a random driver set $S'$ such that $S$ and $S'$ have the same size, and such that $S'$ also provide full control of the system. We then compute the control signals and the corresponding control energies $\mathcal{E}_S$ and $\mathcal{E}_{S'}$ for both $S$ and $S'$. Each system can therefore be represented as a point with coordinates $(|S|, \mathcal{E}_S)$. On figure 2, we plot the densities of these points for the random case (left pannel) and the optimized case (right pannel). Regions in dark red contains a lot of points while regions in dark blue have very few points. Figure 2 shows that most of the systems considered tend to be controlled by the drivers of algorithm X with less energy and/or drivers than for the random case.
 
+
 \begin{figure}
-\includegraphics[scale=.35]{./figure_3/figure_3}
+\includegraphics[scale=.55]{plot4.pdf}%./figure_3/figure_3}
 \caption{Logarithm of average control energy $log(\mathcal{E})$ against size of control set $n_D$ for random and optimized driver sets. Topologies are drawn from a Barabasi-Albert model with $ N_{nodes} = 50 $, power and line capacity distributions are random. $10^4$ instances are considered and the results are displayed as dots. The lines shows the average for both case. }
 \label{fig:densities}
 \end{figure}
@@ -407,7 +408,7 @@ We investigate next how the topology of the grid affects the size of the control
 \end{itemize}
 
 \begin{figure}
-\includegraphics[scale=.25]{./figure_4/figure_4}
+\includegraphics[scale=.55]{plot3.pdf}%./figure_4/figure_4}
 \caption{ $ n_D $ against link probability p for erdos-renyi topologies ($ N=100 $). Curves are averaged over 100 realizations. The top three curves show the results for the three metrics taken into consideration when all constraints are considered (see Level 2 in the main text). The bottom three curves exhibit the results for the same metrics when only the full controllability constraint is considered (see Level 1).}
 \label{fig:erdos_renyi}
 \end{figure}
@@ -419,26 +420,35 @@ When p is close to zero, nodes tend to be very poorly connected such that we nee
 
 Because transmission power grids are spatially constrained (each contry has its own transmission grid which is interconnected with neighboring grids at some specific locations), we study the control in clustered graphs. More precisely, we use a block model $(N, N_{clusters}, p_{in}, p_{out} ) $ to generate random topologies where $ N $ is the number of nodes, $N_{clusters} $ is the number of clusters, $p_{in} $ is the probability that two nodes within the same cluster are linked, and $ p_{out} $ is the probability that two nodes in two distinct clusters are connected.
 
-\begin{figure}
-\includegraphics[scale=.25]{./figure_5/figure_5}
-\caption{$n_D$ against $N_{clusters} $ for different values of $ p_{in} $ and $ p_{out} = 0.1 $. $ N=200 $ and curves are averaged over 100 realizations.}
-\label{fig:block_model_1}
-\end{figure}
+
+\begin{figure*}
+	\begin{center}
+		\includegraphics[scale=.5]{Blockmodel.png}
+		\caption{left panel : $n_D$ against $N_{clusters} $ for different values of $ p_{in} $ and $ p_{out} = 0.1 $. $ N=200 $ and curves are averaged over 100 realizations. right panel : $n_D$ against $ p_{in} $ for systems of $N=200 $, $p_{out} = 0.1 $, and for different values of $N_{clusters} $. The curves are averaged over 100 realizations.}
+	\end{center}
+\end{figure*}
+
+%\begin{figure}
+%\includegraphics[scale=.25]{./figure_5/figure_5}
+%\caption{$n_D$ against $N_{clusters} $ for different values of $ p_{in} $ and $ p_{out} = 0.1 $. $ N=200 $ and curves are averaged over 100 realizations.}
+%\label{fig:block_model_1}
+%\end{figure}
+
 
 Figure \ref{fig:block_model_1} displays how the number of drivers evolves with the number of clusters for different values of $ p_{in} $ when $ p_{out} $ is fixed ($p_{out} =0.1$). For small values of $ p_{in} \sim p_{out} $ clusters are poorly marked, and the connectivity is low. The number of drivers in these conditions is large and increases slowly when the number of clusters augments. As $ p_{in} $ increases, the clusters becomes more densily connected such that within a cluster less drivers are required in order to control it. As the number of clusters grows, more drivers are required. For large values of $p_{in} $, the behavious is more complex. We see indeed that for $p_{in} = 0.9 $ and $N_{clusters} = 2$, almost $ 94\% $ of the nodes are needed for control, but this quantity first decreases with the addition of a few more clusters ($ 71\% $ for $ N_{clusters}=5 $), before increasing. This behavior can be explained by the fact that controlling a very dense network requires, in our settings, a very large portion of nodes to be drivers. Controlling one cluster alone thus requires to control almost all nodes within this cluster. Nevertheless, when a relatively small (compared to the number of nodes in the graph) number of clusters are interconnected with a few links, nodes in one cluster are able to control nodes in other clusters to which they are connected. As the number of clusters grows, the global connectivity increases rapidely, such that the number of drivers also rises. We show this behavior in more details in figure \ref{fig:block_model_2}, where the number of drivers is plotted against $ p_{in} $ for $N=200$ and $N_{clusters} \in \{2,4,5,10\} $. For $N_{clusters} = 2 $ and $ p_{in} = 0.1 $ the number of drivers is large since the graph is poorly connected. When $p_{in} $ increases, $n_D$ decreases until a minimum value $n_D \sim 0.6 $ at $ p_{in} \sim 0.25 $. After this point, $n_D$ augments with $p_{in}$. For $N_{clusters} = 10 $, we do not see this behavior : $ n_D $ decreases continuously as $p_{in} $ increases as expected from the curves of figure \ref{fig:block_model_1}.
 
 
-\begin{figure}
-\includegraphics[scale=.25]{./figure_6/figure_6}
-\caption{$n_D$ against $ p_{in} $ for systems of $N=200 $, $p_{out} = 0.1 $, and for different values of $N_{clusters} $. The curves are averaged over 100 realizations.}
-\label{fig:block_model_2}
-\end{figure}
+%\begin{figure}
+%\includegraphics[scale=.25]{./figure_6/figure_6}
+%\caption{$n_D$ against $ p_{in} $ for systems of $N=200 $, $p_{out} = 0.1 $, and for different values of $N_{clusters} $. The curves are averaged over 100 realizations.}
+%\label{fig:block_model_2}
+%\end{figure}
 
 
 Until now, we have considered all batteries to be equal, i.e they have the same capacity and charge/discharge rate. Although simple, this assumption might not be verified in practice where different types of batteries exist. Optimizing the locations of different types of storage as to optimize the cost / reliability tradeoff is out of the scope of this paper. Nevertheless, we studied how the number of drivers behaves when the batteries have different capacities. More precisely, we draw the capacities of the batteries from a normal distribution $ \mathcal{N}( \mu_{\lambda}, \sigma_{\lambda} ) $ and keep a simple erdos-renyi topology for the power grid. Note that each node is assigned a capacity regardless of its caracteristics (degree, betweeness, and so on...). In figure 6, we plot $n_D$ as a function of the relative standard deviation of the battery capacity distribution $ \sigma_{\lambda} / \mu_{\lambda} $. We see that $n_D$ increases with the variance of the capacity distribution for all three gramian based metrics considered. Moreover, this rise is abrupt since $n_D$ goes from $ 60 \%$ for $\frac{\sigma_{\lambda}}{\mu_{\lambda}} \sim 0.15 $ to $100 \% $ for $\frac{\sigma_{\lambda}}{\mu_{\lambda}} \sim 0.27 $. 
 
 \begin{figure}
-\includegraphics[scale=.37]{./figure_7/figure_7}
+\includegraphics[scale=.55]{plot2.pdf}%./figure_7/figure_7}
 \caption{$n_D$ against the relative standard deviation of the capacity distribution of the batteries $ \frac{ \sigma_{ \lambda } }{ \mu_{ \lambda} } $. The dots are averages over 100 realizations and the curves are obtained using a Savitzky-Golay filter, each color shows the results for a given metric. The graphs are erdos-renyi with $N=100$ and $p=0.3$, and $\mu_{\lambda} = 100 $ units. }
 \label{fig:batteries_variance}
 \end{figure} 
